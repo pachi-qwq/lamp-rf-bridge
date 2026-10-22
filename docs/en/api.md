@@ -58,6 +58,8 @@ Signed Digest nonces expire after an hour and are bound to this boot and the 32-
 a wrap boundary can invalidate an otherwise young nonce early, requiring a fresh challenge.
 The 64-bit RAM session lifetime prevents expired tokens reviving after millis() wraps.
 These clock changes have local boundary tests; fresh real-device auth regression is still required.
+General Digest does not track nonce counts; qop=auth does not authenticate request bodies.
+The command cache below is bounded idempotency, not replay protection against a LAN observer.
 
 <!-- section: status -->
 ## Status fields

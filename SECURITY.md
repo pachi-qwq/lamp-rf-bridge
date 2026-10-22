@@ -29,7 +29,9 @@ not a security certification.
   internet, use router port forwarding, or assume an arbitrary VPN makes HTTP private.
 - HTTP has no TLS. Digest proofs avoid sending the raw login password but do not encrypt traffic;
   a network observer may obtain replayable credentials/proofs or attack a password offline.
-  Wi-Fi provisioning itself sends credentials over this HTTP link.
+  Wi-Fi provisioning itself sends credentials over this HTTP link. General Digest nonce counts
+  are not tracked, and qop=auth does not bind the body. The eight-result command cache prevents
+  recent accidental duplicates, not arbitrary replay after eviction or reboot.
 - Host, Origin (when present), CSRF, command whitelists and HttpOnly/SameSite Cookies reduce
   accidental/cross-site access; they do not protect an already compromised LAN or client.
 - Access/AP passwords and home Wi-Fi credentials remain in NVS without project-enabled Flash

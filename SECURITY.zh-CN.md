@@ -27,6 +27,8 @@
   或认为任意 VPN 都会使 HTTP 私密。
 - HTTP 没有 TLS。Digest 证明避免直接发送登录密码，但不加密流量；
   网络观察者仍可能取得可重放凭据/证明，或离线尝试密码。配网本身通过 HTTP 发送 Wi-Fi 凭据。
+  通用 Digest 不跟踪 nonce 计数，qop=auth 不绑定正文；八项命令缓存仅避免近期误重复，
+  不保证编号被淘汰或设备重启后的防重放。
 - Host、Origin（存在时）、CSRF、命令白名单及 HttpOnly/SameSite Cookie
   限制误访问和跨站操作，不能保护已被攻破的局域网或客户端。
 - 访问/热点密码及家庭 Wi-Fi 凭据保留在未启用项目级 Flash 加密的 NVS。

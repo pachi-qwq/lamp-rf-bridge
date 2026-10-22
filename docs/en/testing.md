@@ -28,7 +28,10 @@ canonical gzip metadata and an embedded third-party license are included. The se
 authentication expiry fix has ten new boundary checks; it is not a claim of a 49-day physical run.
 
 Use the [development commands](development.md) to reproduce the software checks.
-GitHub-hosted CI and the POSIX host compiler branch have not run here; no badge claims otherwise.
+The original [GitHub CI](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39805827721) passed
+firmware and quality, including the Ubuntu host-compiler path, for 8ca1b79. The subsequent
+[review record](../evidence/review-remediation.json) distinguishes repeated local results from the
+unpushed Node.js 24 action upgrade; that workflow still needs its own hosted run.
 
 <!-- section: history -->
 ## Historical real-device evidence
@@ -78,6 +81,31 @@ A real-device test is not a software mock.
 Before releasing the cleanup firmware, run its actual startup, form login, trust/reboot and
 basic authorized lamp checks. Observe one command at a time; never infer lamp effects from HTTP
 200 or RMT completion. Binary release compliance is a separate prerequisite.
+
+<!-- section: cleanup-regression -->
+<a id="cleanup-regression"></a>
+
+## Cleanup firmware regression (Pending)
+
+Only COM1 (an ACPI serial port) was detected during review, with no ESP32 USB adapter. No upload,
+network test or RF transmission was attempted. Keep each row Pending until it has actual evidence.
+
+| Order | Minimal check | Required observation |
+| --- | --- | --- |
+| 1 | Connect USB; build/upload phase4 without erasing NVS | Correct adapter detected; record binary hash and boot log privately |
+| 2 | Start and reconnect with saved Wi-Fi | rf_boot identity valid, bus_error=0, ready=true, MARCSTATE=1; no automatic transmit |
+| 3 | Check HTTP, Digest and one-use form login with existing scripts | Unauthorized/forged/cross-origin/Host/CSRF cases rejected; valid login accepted |
+| 4 | Create a temporary RAM session and remembered token, then reboot once | RAM token rejected, remembered token accepted, old challenge rejected; clean up temporary trust |
+| 5 | Send one power command, repeat its request_id, then one brightness command | Observe lamp effect; repeat must not increment attempts or transmit again |
+| 6 | In an agreed window, interrupt and restore the gateway WLAN | Disconnect/reconnect logged; authenticated status works again; no automatic RF retry |
+
+Each human action is requested separately. Inspect login/trust scripts before running them: they
+write temporary persistent tokens and may replace entries in the four-slot trust ring. Preserve
+the owner's existing access and revoke only temporary test tokens. Never reset NVS for this test.
+
+The 64-bit expiry and Digest epoch logic have boundary tests, but eight-hour expiry and a full
+49.7-day run were not physically exercised. Wi-Fi recovery is an observation target, not a claimed
+result. The [release checklist](release-checklist.md) keeps this regression as an acceptance gate.
 
 <!-- section: limits -->
 ## Unverified limits

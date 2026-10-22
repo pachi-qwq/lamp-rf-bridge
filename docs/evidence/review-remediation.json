@@ -1,0 +1,169 @@
+{
+  "review_date": "2026-10-23",
+  "source_review_commit": "8ca1b79b2facd80249cd3eab49d62572f81edb3a",
+  "empty_base_commit": "35b182edd61ebca3aeae091352fe7d734ebcc9a3",
+  "repository": "https://github.com/pachi-qwq/lamp-rf-bridge",
+  "review_branch": "review/open-source-preparation",
+  "remote_default_branch_at_review": "review/open-source-preparation",
+  "remote_main_or_master_exists": false,
+  "previous_ci": {
+    "run_id": 39805827721,
+    "url": "https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39805827721",
+    "commit": "8ca1b79b2facd80249cd3eab49d62572f81edb3a",
+    "firmware": "success",
+    "quality": "success",
+    "scope": "Original workflow and Ubuntu host tests; not the unpushed Actions upgrade."
+  },
+  "action_upgrade": {
+    "checkout": {
+      "version": "v7.0.1",
+      "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "runtime": "node24",
+      "url": "https://github.com/actions/checkout/releases/tag/v7.0.1"
+    },
+    "setup-python": {
+      "version": "v7.1.0",
+      "sha": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "runtime": "node24",
+      "url": "https://github.com/actions/setup-python/releases/tag/v7.1.0"
+    },
+    "setup-node": {
+      "version": "v7.1.0",
+      "sha": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+      "runtime": "node24",
+      "url": "https://github.com/actions/setup-node/releases/tag/v7.1.0"
+    }
+  },
+  "updated_workflow_hosted_run": "Pending: no push authorized in this review",
+  "local_validation": {
+    "platformio_environments": [
+      "esp32dev",
+      "phase2",
+      "phase3",
+      "phase4"
+    ],
+    "build_status": "passed",
+    "compiler_warning_lines": 0,
+    "cpp_assertions": 273,
+    "real_capture_python_tests": 5,
+    "offline_javascript_checks": 8,
+    "local_node_version": "24.16.0",
+    "python_version": "3.11.15",
+    "pip_check": "passed",
+    "final_repository_checks": 1215,
+    "actionlint": "1.7.7 passed",
+    "markdown": {
+      "files": 41,
+      "errors": 0
+    },
+    "public_files": 211,
+    "git_diff_check": "passed"
+  },
+  "firmware_artifacts": {
+    "esp32dev": {
+      "sha256": "534f09ab376c13443af26982c0052b445ace12930ce0dee21f70b39848ac7099",
+      "binary_file_bytes": 278672
+    },
+    "phase2": {
+      "sha256": "210e697bd44c3f1ddf21c21c609c2724d86d3efce71fde62082f00b6884827c5",
+      "binary_file_bytes": 378496
+    },
+    "phase3": {
+      "sha256": "84725fdc1a012af8dcfe8ed7fe4fa0c6aee9181b40035e7d977d989291181ae1",
+      "binary_file_bytes": 287632
+    },
+    "phase4": {
+      "sha256": "606c73da7fde56dd3705b9baf19658b5eda139ff0a5daf23086a04c17b3f1119",
+      "binary_file_bytes": 902272
+    }
+  },
+  "runtime_changes_since_8ca1b79": false,
+  "hardware_regression": {
+    "status": "Pending",
+    "reason": "Only COM1 ACPI serial port detected; no ESP32 USB serial adapter",
+    "firmware_flashed": false,
+    "rf_transmitted": false,
+    "required": [
+      "startup and saved Wi-Fi",
+      "CC1101 identity and idle health",
+      "HTTP/Host/Origin/CSRF/authorization rejection",
+      "form login, RAM session and persistent trust",
+      "real restart and old challenge invalidation",
+      "one power/brightness command and duplicate request handling",
+      "WLAN interruption and recovery"
+    ]
+  },
+  "privacy": {
+    "tracked_files_checked": 211,
+    "reachable_initial_commits_checked": 2,
+    "unique_reachable_blobs_checked": 199,
+    "known_credential_or_device_identifier_findings": 0,
+    "additional_redactions": 0,
+    "historical_record_change": "43 relative evidence references corrected in phase3/phase4 records; original outcomes/quotes/timings/hashes unchanged",
+    "intentional_rf_codes": "Retained single-owner lamp profile and capture fixtures; these are replayable control data, not account credentials.",
+    "history_rewritten": false,
+    "png_metadata": "No EXIF or text metadata chunks in either published PNG"
+  },
+  "licenses": {
+    "first_party": "MIT; Copyright (c) 2026 pachi-qwq",
+    "github_license_detection": "MIT License",
+    "third_party_notices": "retained; no dependency or asset additions",
+    "binary_distribution_materials": "Pending LGPL corresponding-source/relinking and SDK-term preparation"
+  },
+  "manual_settings": {
+    "description": "",
+    "topics": [],
+    "homepage": "",
+    "private_vulnerability_reporting_enabled": false,
+    "private_conduct_channel": "Pending owner designation"
+  },
+  "merge_readiness": "Pending updated hosted CI, owner review and current-firmware hardware acceptance",
+  "firmware_release_blockers": [
+    "Current firmware hardware regression not completed",
+    "Complete binary-license distribution materials not prepared"
+  ],
+  "authorized_actions_performed": {
+    "local_commits": true,
+    "pushed": false,
+    "main_created_or_pushed": false,
+    "pull_request_created": false,
+    "remote_settings_changed": false
+  },
+  "initial_cleanup_behavior_changes": {
+    "authentication": "SessionTokens uses 64-bit esp_timer expiry; LampWebServer binds Digest signatures to the 32-bit clock epoch. New pure Web policy helpers and ten boundary assertions.",
+    "packaging": "Generated Web bytes include deterministic gzip metadata, bilingual source comments and full vendor license; CSP hashes regenerated.",
+    "build_tools": "Project-only -Werror, POSIX host-test support, CSV byte preservation, and portable build wrappers.",
+    "preserved": "22 RF/control C++ files semantically matched private baseline; 20 CSV files and vendored MD5 bytes unchanged."
+  },
+  "security_review": {
+    "checked_paths": [
+      "Host/Origin/CSRF before mutation",
+      "Digest path/boot/epoch/expiry",
+      "one-use form challenge and cookie lifetime",
+      "command input whitelist and bounded request-id cache",
+      "AP-only Wi-Fi credential write",
+      "reboot and reconnect code"
+    ],
+    "new_runtime_fix_needed": false,
+    "documented_limits": [
+      "LAN HTTP is unencrypted",
+      "Digest nonce count is not tracked and qop=auth does not bind request bodies",
+      "Eight-result idempotency is not general anti-replay",
+      "No dedicated password rate limiter or secure NVS encryption"
+    ],
+    "scope": "Source review and offline tests; not a security certification or new hardware result."
+  },
+  "pr_strategy": {
+    "empty_base_is_ancestor": true,
+    "base_tree_empty": true,
+    "github_compare_existing_import": {
+      "status": "ahead",
+      "ahead_by": 1,
+      "behind_by": 0,
+      "files": 210
+    },
+    "planned_main_ref": "35b182edd61ebca3aeae091352fe7d734ebcc9a3",
+    "default_branch_change": "Manual administrator action after main exists; not performed",
+    "workflow_dispatch_on_empty_main": "Unavailable until workflow reaches default branch; use push/PR checks"
+  }
+}

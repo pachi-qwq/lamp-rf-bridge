@@ -24,7 +24,7 @@
   "python_tests": 5,
   "evidence": [
     {
-      "file": "evidence/20261021_233018_481753_power_replay.json",
+      "file": "20261021_233018_481753_power_replay.json",
       "button": "power",
       "waveform_completed": true,
       "elapsed_us": 180240,
@@ -36,7 +36,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233041_000784_power_replay.json",
+      "file": "20261021_233041_000784_power_replay.json",
       "button": "power",
       "waveform_completed": true,
       "elapsed_us": 180257,
@@ -48,7 +48,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233347_247777_replay_power.json",
+      "file": "20261021_233347_247777_replay_power.json",
       "button": "power",
       "waveform_completed": true,
       "elapsed_us": 179178,
@@ -61,7 +61,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233406_288371_replay_brightness_down.json",
+      "file": "20261021_233406_288371_replay_brightness_down.json",
       "button": "brightness_down",
       "waveform_completed": true,
       "elapsed_us": 178070,
@@ -73,7 +73,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233441_375594_replay_brightness_up.json",
+      "file": "20261021_233441_375594_replay_brightness_up.json",
       "button": "brightness_up",
       "waveform_completed": true,
       "elapsed_us": 179294,
@@ -85,7 +85,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233519_622119_replay_brightness_up.json",
+      "file": "20261021_233519_622119_replay_brightness_up.json",
       "button": "brightness_up",
       "waveform_completed": true,
       "elapsed_us": 179294,
@@ -97,7 +97,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233533_463657_replay_brightness_down.json",
+      "file": "20261021_233533_463657_replay_brightness_down.json",
       "button": "brightness_down",
       "waveform_completed": true,
       "elapsed_us": 178070,
@@ -109,7 +109,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233630_613718_replay_brightness_up.json",
+      "file": "20261021_233630_613718_replay_brightness_up.json",
       "button": "brightness_up",
       "waveform_completed": true,
       "elapsed_us": 179294,
@@ -121,7 +121,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233633_516309_replay_brightness_up.json",
+      "file": "20261021_233633_516309_replay_brightness_up.json",
       "button": "brightness_up",
       "waveform_completed": true,
       "elapsed_us": 179294,
@@ -133,7 +133,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233636_410053_replay_brightness_up.json",
+      "file": "20261021_233636_410053_replay_brightness_up.json",
       "button": "brightness_up",
       "waveform_completed": true,
       "elapsed_us": 179294,
@@ -145,7 +145,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233645_180537_replay_brightness_down.json",
+      "file": "20261021_233645_180537_replay_brightness_down.json",
       "button": "brightness_down",
       "waveform_completed": true,
       "elapsed_us": 178070,
@@ -157,7 +157,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233648_074301_replay_brightness_down.json",
+      "file": "20261021_233648_074301_replay_brightness_down.json",
       "button": "brightness_down",
       "waveform_completed": true,
       "elapsed_us": 178981,
@@ -169,7 +169,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233650_969658_replay_brightness_down.json",
+      "file": "20261021_233650_969658_replay_brightness_down.json",
       "button": "brightness_down",
       "waveform_completed": true,
       "elapsed_us": 178981,
@@ -181,7 +181,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233716_778597_replay_cct_up.json",
+      "file": "20261021_233716_778597_replay_cct_up.json",
       "button": "cct_up",
       "waveform_completed": true,
       "elapsed_us": 180015,
@@ -193,7 +193,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233719_673615_replay_cct_up.json",
+      "file": "20261021_233719_673615_replay_cct_up.json",
       "button": "cct_up",
       "waveform_completed": true,
       "elapsed_us": 180015,
@@ -205,7 +205,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233722_563085_replay_cct_up.json",
+      "file": "20261021_233722_563085_replay_cct_up.json",
       "button": "cct_up",
       "waveform_completed": true,
       "elapsed_us": 180015,
@@ -217,7 +217,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233739_208715_replay_cct_down.json",
+      "file": "20261021_233739_208715_replay_cct_down.json",
       "button": "cct_down",
       "waveform_completed": true,
       "elapsed_us": 179771,
@@ -229,7 +229,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233742_096829_replay_cct_down.json",
+      "file": "20261021_233742_096829_replay_cct_down.json",
       "button": "cct_down",
       "waveform_completed": true,
       "elapsed_us": 179771,
@@ -241,7 +241,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233744_984685_replay_cct_down.json",
+      "file": "20261021_233744_984685_replay_cct_down.json",
       "button": "cct_down",
       "waveform_completed": true,
       "elapsed_us": 179771,
@@ -253,7 +253,7 @@
       }
     },
     {
-      "file": "evidence/20261021_233759_319288_replay_night_mode.json",
+      "file": "20261021_233759_319288_replay_night_mode.json",
       "button": "night_mode",
       "waveform_completed": true,
       "elapsed_us": 179544,
@@ -265,5 +265,9 @@
       }
     }
   ],
-  "successful_waveform_operations": 20
+  "successful_waveform_operations": 20,
+  "record_maintenance": {
+    "scope": "Only file paths in the evidence array were normalized relative to this file after relocation. Original outcomes, feedback, timing, counters, hashes and pending status are unchanged.",
+    "scope_zh_CN": "仅将 evidence 数组中的 file 路径修正为相对此文件的位置；原测试结果、反馈、时序、计数、哈希和待验状态均未改动。"
+  }
 }

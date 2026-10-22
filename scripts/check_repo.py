@@ -260,6 +260,19 @@ def check_assets():
               f"PNG dimensions differ: {name}")
 
 
+def check_evidence():
+    """Validate archived JSON references without changing observed outcomes.
+    校验归档 JSON 的引用，不改变已记录的观察结果。
+    """
+    for path in (ROOT / "docs/evidence").glob("historical-*.json"):
+        for item in load_json(path).get("evidence", []):
+            reference = item if isinstance(item, str) else (item.get("file") if isinstance(item, dict) else None)
+            check(isinstance(reference, str), f"Invalid evidence reference in {path.name}")
+            target = (path.parent / reference).resolve()
+            check(target.is_relative_to(ROOT) and target.is_file(),
+                  f"Missing historical evidence reference: {path.name}: {reference}")
+
+
 def main():
     paths = public_files()
     check_links([p for p in paths if p.suffix == ".md"])
@@ -269,6 +282,7 @@ def main():
     check_sources(paths)
     check_comment_languages(paths)
     check_assets()
+    check_evidence()
     check(not any(p.suffix == ".log" for p in paths), "Raw log included in public file set")
     print(f"PASS: {checks} repository checks; {len(paths)} public files; no hardware access")
 

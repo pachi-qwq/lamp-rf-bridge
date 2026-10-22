@@ -26,7 +26,10 @@
 独立认证期限修复新增十项边界测试，不表示实际连续运行了 49 天。
 
 复现软件检查见[开发命令](development.md)。
-本地尚未运行 GitHub 托管 CI 或 POSIX 主机编译分支，也没有据此添加成功徽章。
+原版 [GitHub CI](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39805827721)
+已对 8ca1b79 通过 firmware、quality，包含 Ubuntu 主机编译路径。
+后续[评审记录](../evidence/review-remediation.json)区分本地重跑结果与尚未推送的
+Node.js 24 Actions 升级；更新后的工作流仍需单独远程运行。
 
 <!-- section: history -->
 ## 历史真实设备证据
@@ -72,6 +75,29 @@
 
 发布整理后的固件前，应重新验证启动、表单登录、信任/重启及基本授权控灯。
 逐条观察，不能从 HTTP 200 或 RMT 完成推导灯效；二进制许可分发准备是另一前提。
+
+<!-- section: cleanup-regression -->
+<a id="cleanup-regression"></a>
+
+## 整理后固件回归（Pending）
+
+本轮只发现 COM1（ACPI 串口），未识别到 ESP32 USB 转串口。
+没有尝试烧录、网络测试或射频发送；以下项目在取得真实证据前均保持 Pending。
+
+| 顺序 | 最小检查 | 预期观察 |
+| --- | --- | --- |
+| 1 | 连接 USB，构建/烧录 phase4，不擦除 NVS | 识别正确适配器，私密保存二进制哈希和启动日志 |
+| 2 | 启动并连接已保存 Wi-Fi | rf_boot 身份合法、bus_error=0、ready=true、MARCSTATE=1；不自动发射 |
+| 3 | 使用现有脚本检查 HTTP、Digest 及一次性表单登录 | 未授权、伪造、跨源、错误 Host/CSRF 被拒；合法登录成功 |
+| 4 | 建立临时 RAM 会话及信任凭证，再重启一次 | RAM 凭证失效、信任凭证有效、旧挑战失效；清理临时信任 |
+| 5 | 发一次电源命令，再重复其 request_id，最后一次调亮 | 观察灯效；重复请求不增加 attempts、不再次发射 |
+| 6 | 在约定时间中断并恢复网关 WLAN | 记录断线/重连，认证状态接口恢复可用，不自动重发 RF |
+
+每次只向操作者提出一个动作。运行前检查登录/信任脚本：它们会写入临时持久凭证，
+可能替换四槽信任环中的已有条目。保留原有访问，只撤销测试临时凭证，不为此测试清空 NVS。
+
+64 位期限和 Digest 周期绑定已有边界测试，但没有实际等待八小时或运行完整 49.7 天。
+Wi-Fi 恢复是待观察项目，不是已通过结果。[发布检查表](release-checklist.md)保留该验收条件。
 
 <!-- section: limits -->
 ## 未验证范围

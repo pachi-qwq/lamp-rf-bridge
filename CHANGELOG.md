@@ -18,6 +18,9 @@ historical version changes are reconstructed. Compare links can be added after a
 
 ### Changed
 
+- Refresh release/PR status against the real repository and successful original CI; keep new hardware and workflow checks pending.
+- Pin stable Node.js 24 Actions and validate relocated historical evidence references without changing results.
+
 - Host logic tests also support a POSIX C++17 compiler; the PowerShell build wrapper no longer needs rtk.
 - Captured CSV bytes are preserved across Git checkouts; gzip metadata is platform-independent.
 - Shipped web bundles retain the third-party MD5 license. Raw serial logs and superseded working
