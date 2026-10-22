@@ -73,9 +73,12 @@ go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.7 .github/workflows/ci.ym
 Python 3.11、Node 22 使用兼容维护补丁，固件包及 npm 依赖固定。
 不模拟硬件、凭据或射频响应。
 
-本地工作区尚未运行 GitHub 托管 CI。Windows 构建与测试、actionlint/YAML 检查通过，
-不能证明 Ubuntu runner 已成功。远程工作流真实通过前不添加绿色徽章。
-CI 不分发固件二进制产物。
+原版[托管运行](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39805827721)
+已对 8ca1b79 通过两个 Job，包含 Ubuntu 主机测试。当前工作流固定 checkout v7.0.1、
+setup-python v7.1.0、setup-node v7.1.0，它们均声明 node24，要求 runner 至少 2.327.1。
+项目检查工具仍选择 Node 22；Actions 的 ESM/运行时升级不改变固件依赖，
+并显式关闭包管理器自动缓存。更新后的工作流目前只有本地配置检查，
+需经授权推送后触发新运行。CI 不分发固件二进制产物。
 
 <!-- section: changes -->
 ## 保持改动可审查

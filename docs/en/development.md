@@ -75,9 +75,13 @@ credentials are not persisted, jobs have timeouts, and there is no publish/deplo
 Python 3.11 and Node 22 select compatible maintenance patches; firmware package versions and npm
 dependencies remain pinned. No hardware, credentials or RF response is simulated.
 
-GitHub-hosted CI has not run in this local checkout. Local Windows build/test success and
-actionlint/YAML checks do not establish success on an Ubuntu runner. Do not add a green badge
-until the real remote workflow has passed. No firmware binary artifact is distributed by CI.
+The original [hosted run](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39805827721)
+passed both jobs for 8ca1b79, including Ubuntu host tests. The current workflow pins checkout
+v7.0.1, setup-python v7.1.0 and setup-node v7.1.0, each declaring node24. These actions require
+runner 2.327.1 or newer; the application check tools still select Node 22. ESM/action upgrades
+do not change firmware dependencies. Automatic package-manager caching is disabled.
+The upgraded workflow has local configuration checks only until an authorized push triggers a
+new run. No firmware binary artifact is distributed by CI.
 
 <!-- section: changes -->
 ## Keep changes reviewable
