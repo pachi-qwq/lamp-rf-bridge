@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "scope": "Phase 2 接收标定；未进行射频重放或灯具控制验证",
+  "rf_settings": {
+    "frequency_hz": 433920000,
+    "profile": "default",
+    "crystal_hz_assumed": 26000000,
+    "carrier_frequency_independently_measured": false,
+    "modulation_setting": "ASK/OOK",
+    "bandwidth_hz": 203125,
+    "receiver_data_rate_millibaud": 4797935
+  },
+  "bit_representation": {
+    "long_high_short_low": "1",
+    "short_high_long_low": "0",
+    "time_order": "MSB first convention",
+    "observed_symbols_per_full_frame": 24,
+    "vendor_protocol_identified": false
+  },
+  "buttons": [
+    {
+      "button": "power",
+      "title": "电源键（开关共用）",
+      "observed_frame_hex": "FFFF02",
+      "bit_count": 24,
+      "operator_identified_key": true,
+      "actual_gateway_control_verified": false,
+      "samples": [
+        {
+          "source_csv": "20261021_225552_366188_power_on_clean_01_wait1.csv",
+          "source_metadata": "20261021_225552_366188_power_on_clean_01_wait1.json",
+          "raw_pulse_count": 266,
+          "complete_frame_count": 3,
+          "ambiguous_edges": 2,
+          "zero_durations": 0,
+          "overflow": false,
+          "rssi_peak_dbm": -37.5
+        },
+        {
+          "source_csv": "20261021_225743_951701_power_off_clean_01_wait1.csv",
+          "source_metadata": "20261021_225743_951701_power_off_clean_01_wait1.json",
+          "raw_pulse_count": 480,
+          "complete_frame_count": 2,
+          "ambiguous_edges": 10,
+          "zero_durations": 0,
+          "overflow": false,
+          "rssi_peak_dbm": -28.5
+        }
+      ],
+      "selected_full_frame": {
+        "file": "frames/power.csv",
+        "source_csv": "20261021_225743_951701_power_off_clean_01_wait1.csv",
+        "start_index": 48,
+        "end_index": 97,
+        "pulse_count": 50,
+        "selection_rule": "最后一个具有正常帧间隔且与同键重复一致的完整帧，逐项保留原始测量值"
+      },
+      "note": "用户确认开灯与关灯是同一个实体键；两组有标签采样均为相同帧，尚无独立绝对开/关指令证据。"
+    },
+    {
+      "button": "brightness_up",
+      "title": "亮度增加",
+      "observed_frame_hex": "FFFF0A",
+      "bit_count": 24,
+      "operator_identified_key": true,
+      "actual_gateway_control_verified": false,
+      "samples": [
+        {
+          "source_csv": "20261021_230038_243233_brightness_up_01_wait1.csv",
+          "source_metadata": "20261021_230038_243233_brightness_up_01_wait1.json",
+          "raw_pulse_count": 806,
+          "complete_frame_count": 9,
+          "ambiguous_edges": 9,
+          "zero_durations": 0,
+          "overflow": false,
+          "rssi_peak_dbm": -27.0
+        }
+      ],
+      "selected_full_frame": {
+        "file": "frames/brightness_up.csv",
+        "source_csv": "20261021_230038_243233_brightness_up_01_wait1.csv",
+        "start_index": 634,
+        "end_index": 683,
+        "pulse_count": 50,
+        "selection_rule": "最后一个具有正常帧间隔且与同键重复一致的完整帧，逐项保留原始测量值"
+      }
+    },
+    {
+      "button": "brightness_down",
+      "title": "亮度减少",
+      "observed_frame_hex": "FFFF0C",
+      "bit_count": 24,
+      "operator_identified_key": true,
+      "actual_gateway_control_verified": false,
+      "samples": [
+        {
+          "source_csv": "20261021_230234_207205_brightness_down_01_wait1.csv",
+          "source_metadata": "20261021_230234_207205_brightness_down_01_wait1.json",
+          "raw_pulse_count": 1048,
+          "complete_frame_count": 12,
+          "ambiguous_edges": 15,
+          "zero_durations": 0,
+          "overflow": false,
+          "rssi_peak_dbm": -31.5
+        }
+      ],
+      "selected_full_frame": {
+        "file": "frames/brightness_down.csv",
+        "source_csv": "20261021_230234_207205_brightness_down_01_wait1.csv",
+        "start_index": 890,
+        "end_index": 939,
+        "pulse_count": 50,
+        "selection_rule": "最后一个具有正常帧间隔且与同键重复一致的完整帧，逐项保留原始测量值"
+      }
+    },
+    {
+      "button": "cct_up",
+      "title": "色温增加／偏冷",
+      "observed_frame_hex": "FFFF12",
+      "bit_count": 24,
+      "operator_identified_key": true,
+      "actual_gateway_control_verified": false,
+      "samples": [
+        {
+          "source_csv": "20261021_230344_351979_cct_up_01_wait1.csv",
+          "source_metadata": "20261021_230344_351979_cct_up_01_wait1.json",
+          "raw_pulse_count": 782,
+          "complete_frame_count": 9,
+          "ambiguous_edges": 7,
+          "zero_durations": 0,
+          "overflow": false,
+          "rssi_peak_dbm": -31.0
+        }
+      ],
+      "selected_full_frame": {
+        "file": "frames/cct_up.csv",
+        "source_csv": "20261021_230344_351979_cct_up_01_wait1.csv",
+        "start_index": 612,
+        "end_index": 661,
+        "pulse_count": 50,
+        "selection_rule": "最后一个具有正常帧间隔且与同键重复一致的完整帧，逐项保留原始测量值"
+      }
+    },
+    {
+      "button": "cct_down",
+      "title": "色温减少／偏暖",
+      "observed_frame_hex": "FFFF10",
+      "bit_count": 24,
+      "operator_identified_key": true,
+      "actual_gateway_control_verified": false,
+      "samples": [
+        {
+          "source_csv": "20261021_230507_900130_cct_down_01_wait1.csv",
+          "source_metadata": "20261021_230507_900130_cct_down_01_wait1.json",
+          "raw_pulse_count": 786,
+          "complete_frame_count": 9,
+          "ambiguous_edges": 9,
+          "zero_durations": 0,
+          "overflow": false,
+          "rssi_peak_dbm": -30.5
+        }
+      ],
+      "selected_full_frame": {
+        "file": "frames/cct_down.csv",
+        "source_csv": "20261021_230507_900130_cct_down_01_wait1.csv",
+        "start_index": 634,
+        "end_index": 683,
+        "pulse_count": 50,
+        "selection_rule": "最后一个具有正常帧间隔且与同键重复一致的完整帧，逐项保留原始测量值"
+      }
+    },
+    {
+      "button": "night_mode",
+      "title": "夜灯模式",
+      "observed_frame_hex": "FFFF04",
+      "bit_count": 24,
+      "operator_identified_key": true,
+      "actual_gateway_control_verified": false,
+      "samples": [
+        {
+          "source_csv": "20261021_230558_970608_night_mode_01_wait1.csv",
+          "source_metadata": "20261021_230558_970608_night_mode_01_wait1.json",
+          "raw_pulse_count": 522,
+          "complete_frame_count": 6,
+          "ambiguous_edges": 8,
+          "zero_durations": 0,
+          "overflow": false,
+          "rssi_peak_dbm": -32.0
+        }
+      ],
+      "selected_full_frame": {
+        "file": "frames/night_mode.csv",
+        "source_csv": "20261021_230558_970608_night_mode_01_wait1.csv",
+        "start_index": 342,
+        "end_index": 391,
+        "pulse_count": 50,
+        "selection_rule": "最后一个具有正常帧间隔且与同键重复一致的完整帧，逐项保留原始测量值"
+      }
+    },
+    {
+      "button": "timer_10min",
+      "title": "10 分钟定时",
+      "observed_frame_hex": "FFFF06",
+      "bit_count": 24,
+      "operator_identified_key": true,
+      "actual_gateway_control_verified": false,
+      "samples": [
+        {
+          "source_csv": "20261021_230706_704614_timer_01_wait1.csv",
+          "source_metadata": "20261021_230706_704614_timer_01_wait1.json",
+          "raw_pulse_count": 528,
+          "complete_frame_count": 6,
+          "ambiguous_edges": 10,
+          "zero_durations": 0,
+          "overflow": false,
+          "rssi_peak_dbm": -29.0
+        }
+      ],
+      "selected_full_frame": {
+        "file": "frames/timer_10min.csv",
+        "source_csv": "20261021_230706_704614_timer_01_wait1.csv",
+        "start_index": 368,
+        "end_index": 417,
+        "pulse_count": 50,
+        "selection_rule": "最后一个具有正常帧间隔且与同键重复一致的完整帧，逐项保留原始测量值"
+      },
+      "timer_label_minutes": 10,
+      "timer_expiry_verified": false
+    }
+  ],
+  "unlabelled_debug_samples": [
+    {
+      "source_csv": "20261021_224740_328966_power_on_wait_extended.csv",
+      "observed_hex": "FFFF02"
+    },
+    {
+      "source_csv": "20261021_225220_396139_power_on_02_wait1.csv",
+      "observed_hex": "FFFF08"
+    }
+  ],
+  "debug_note": "用户说明前两次存在调试操作并要求重采，因此不据此确定按钮映射。",
+  "observed_timing_us": {
+    "short_median": 408.0,
+    "short_min": 374,
+    "short_max": 490,
+    "long_median": 1190.5,
+    "long_min": 1113,
+    "long_max": 1226,
+    "sync_low_median": 13817,
+    "sync_low_min": 13771,
+    "sync_low_max": 13848,
+    "normal_frame_total_median": 52678,
+    "normal_frame_count": 37,
+    "independent_preamble_identified": false
+  },
+  "validation_totals": {
+    "labelled_capture_files": 8,
+    "raw_pulse_segments": 5218,
+    "full_matching_frames": 56,
+    "ambiguous_edge_callbacks": 70,
+    "buffer_overflows": 0,
+    "phase2_core_acceptance": "可重复采集并区分七类实体按键",
+    "replay_verified": false
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "first_client_status": 200,
+  "second_unauthenticated_status": 401,
+  "first_client_previous_challenge_status": 401,
+  "old_challenge_invalidated": true
+}

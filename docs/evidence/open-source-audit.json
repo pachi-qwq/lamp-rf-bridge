@@ -1,0 +1,123 @@
+{
+  "status": "local_cleanup_complete",
+  "date": "2026-10-22",
+  "scope": "Open-source preparation and local software verification; no firmware upload or RF transmission.",
+  "copyright": "Copyright (c) 2026 pachi-qwq (confirmed by owner)",
+  "firmware_builds": {
+    "esp32dev": {
+      "ram_bytes": 21600,
+      "flash_bytes": 278309,
+      "firmware_sha256": "534f09ab376c13443af26982c0052b445ace12930ce0dee21f70b39848ac7099",
+      "status": "passed"
+    },
+    "phase2": {
+      "ram_bytes": 91416,
+      "flash_bytes": 378129,
+      "firmware_sha256": "210e697bd44c3f1ddf21c21c609c2724d86d3efce71fde62082f00b6884827c5",
+      "status": "passed"
+    },
+    "phase3": {
+      "ram_bytes": 22688,
+      "flash_bytes": 287265,
+      "firmware_sha256": "84725fdc1a012af8dcfe8ed7fe4fa0c6aee9181b40035e7d977d989291181ae1",
+      "status": "passed"
+    },
+    "phase4": {
+      "ram_bytes": 49680,
+      "flash_bytes": 895689,
+      "firmware_sha256": "606c73da7fde56dd3705b9baf19658b5eda139ff0a5daf23086a04c17b3f1119",
+      "status": "passed"
+    }
+  },
+  "compiler_warning_lines": 0,
+  "tests": {
+    "cpp_assertions": 273,
+    "cpp_groups": {
+      "identity": 29,
+      "radio_math": 12,
+      "replay": 189,
+      "web_policy": 43
+    },
+    "real_capture_python_tests": 5,
+    "offline_javascript_vectors": 8,
+    "repository_assertions": 1114,
+    "public_files": 210,
+    "markdown_files": 41,
+    "markdown_errors": 0,
+    "actionlint": "1.7.7 passed",
+    "openapi": "3.1 validated with openapi-spec-validator 0.7.2",
+    "python_dependencies": "pip check passed",
+    "npm_install": "npm ci --ignore-scripts passed using registry.npmjs.org",
+    "git_cached_diff_check": "passed"
+  },
+  "reproducibility": {
+    "independent_git_index_checkout": "210 public files; repository checks, capture tests and Windows host tests passed",
+    "windows_generators": "both --check passed",
+    "ubuntu_wsl_generators": "Python 3.12.3; both --check passed on independent checkout",
+    "tracked_csv_index_bytes": "20 files match working tree byte-for-byte",
+    "gzip_metadata": "mtime=0; OS=255"
+  },
+  "preservation": {
+    "rf_control_cpp_files_semantically_unchanged": 22,
+    "rf_csv_files_byte_identical": 20,
+    "vendor_md5_script_byte_identical": true,
+    "rf_pins_parameters_and_pulse_timings_changed": false
+  },
+  "privacy": {
+    "public_files_scanned": 210,
+    "known_private_credentials_or_owner_network_identifiers_found": 0,
+    "historical_json_files_sanitized": 11,
+    "raw_logs_excluded_from_git_but_retained_locally": 39,
+    "legacy_notes_retained_privately": 9,
+    "git_commits_at_audit": 0,
+    "remote_repositories_at_audit": 0,
+    "scope": "Known-value and structural review, not a guarantee of anonymous RF data; original local Git objects and private backups are not publication artifacts."
+  },
+  "documents": {
+    "technical_guides_per_language": 12,
+    "coverage": "English/Chinese file names, sections and executable command blocks checked; technical contents reviewed against implementation.",
+    "paired_root_documents": 6,
+    "paired_supporting_readmes": 2
+  },
+  "security_fix": {
+    "scope": "Separate authentication lifetime fix, documented in Unreleased",
+    "changes": "64-bit monotonic session expiry; Digest signatures bound to the uptime epoch to prevent revival after 32-bit millis rollover.",
+    "new_boundary_assertions": 10,
+    "hardware_regression": "not run"
+  },
+  "licensing": {
+    "first_party": "MIT",
+    "vendored_md5": "MIT; original bytes and notices retained, full notice embedded in served page",
+    "code_of_conduct": "Contributor Covenant 2.1; CC BY 4.0 from pinned upstream commit",
+    "arduino_esp32": "LGPL-2.1-or-later; SDK/component licenses vary",
+    "complete_binary_compliance_distribution": "not prepared"
+  },
+  "not_executed": [
+    "GitHub-hosted CI",
+    "POSIX C++ host compiler branch",
+    "New cleanup firmware hardware boot/login/trust/reboot and lamp regression",
+    "Timer expiry, calibrated range/carrier/power, long-duration operation"
+  ],
+  "publication_actions_taken": {
+    "git_commit": false,
+    "git_push": false,
+    "public_release": false,
+    "remote_settings_changed": false,
+    "firmware_flashed": false
+  },
+  "remaining_owner_actions": [
+    "Review staged source and RF fixtures, create initial commit and remote when ready",
+    "Enable GitHub Private Vulnerability Reporting and define private conduct-reporting contact",
+    "Run actual GitHub CI before claiming success",
+    "Before binary release: hardware regression and applicable LGPL/SDK distribution materials"
+  ],
+  "recommended_first_version": "0.1.0 after release checks; current changelog remains Unreleased",
+  "pending_local_checks": [],
+  "phase4": {
+    "ram_bytes": 49680,
+    "flash_bytes": 895689,
+    "firmware_sha256": "606c73da7fde56dd3705b9baf19658b5eda139ff0a5daf23086a04c17b3f1119",
+    "status": "passed",
+    "flashed": false
+  }
+}

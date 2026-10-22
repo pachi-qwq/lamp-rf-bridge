@@ -1,0 +1,21 @@
+{
+  "measurements": [
+    {
+      "idle_tcp_socket": false,
+      "roundtrip_ms": 48.2,
+      "rf_ready": true
+    },
+    {
+      "idle_tcp_socket": true,
+      "roundtrip_ms": 4930.1,
+      "rf_ready": true
+    },
+    {
+      "idle_tcp_socket": false,
+      "roundtrip_ms": 44.0,
+      "rf_ready": true
+    }
+  ],
+  "rf_attempts_unchanged": true,
+  "note": "Actual ESP32 idle TCP connection ahead of real HTTP status request; no RF transmission"
+}

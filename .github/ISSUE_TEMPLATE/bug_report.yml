@@ -1,0 +1,25 @@
+name: Bug report / 缺陷报告
+description: Reproducible firmware, hardware or UI issue / 可复现的固件、硬件或界面问题
+body:
+  - type: markdown
+    attributes:
+      value: "Security issues: read SECURITY.md first. Never post passwords, Cookies, MACs or private RF traffic. 安全问题先读 SECURITY.zh-CN.md；不要公开密码、Cookie、MAC 或私人射频数据。"
+  - type: textarea
+    id: setup
+    attributes:
+      label: Hardware and firmware / 硬件与固件
+      description: "Board/module revisions, wiring differences, environment and Git revision. UI issues: phone/OS/browser. 开发板及模块版本、接线差异、环境和 Git 版本；界面问题补充手机、系统及浏览器。"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduce, expected and actual / 复现、预期及实际结果
+      description: "Include whether the device itself responded or only the gateway reported success. 区分实际设备响应与网关发送成功。"
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence / 脱敏证据
+      description: "Relevant build/errors or quality flags; mark tests not run. 相关构建、错误及质量标志；注明未执行测试。"

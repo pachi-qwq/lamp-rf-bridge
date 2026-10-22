@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "name": "memory_session_does_not_survive_reboot",
+      "passed": true
+    },
+    {
+      "name": "remembered_form_login_survives_reboot",
+      "passed": true
+    },
+    {
+      "name": "cleanup_remembered_form_token",
+      "passed": true
+    },
+    {
+      "name": "forget_keeps_current_memory_session",
+      "passed": true
+    },
+    {
+      "name": "revoked_persistent_token_rejected",
+      "passed": true
+    },
+    {
+      "name": "no_rf_transmission",
+      "passed": true
+    }
+  ],
+  "before_attempts": 0,
+  "after_attempts": 0,
+  "all_passed": true
+}

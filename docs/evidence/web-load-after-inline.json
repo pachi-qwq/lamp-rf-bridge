@@ -1,0 +1,23 @@
+{
+  "measurements": [
+    {
+      "roundtrip_ms": 77.3,
+      "ttfb_ms": 36.1,
+      "bytes": 21738
+    },
+    {
+      "roundtrip_ms": 66.2,
+      "ttfb_ms": 29.7,
+      "bytes": 21738
+    },
+    {
+      "roundtrip_ms": 81.8,
+      "ttfb_ms": 48.7,
+      "bytes": 21738
+    }
+  ],
+  "median_document_ms": 77.3,
+  "html_css_js_requests": 1,
+  "rf_attempts_unchanged": true,
+  "note": "PC real HTTP document roundtrip; not iPhone startup or first paint timing"
+}

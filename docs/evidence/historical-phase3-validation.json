@@ -1,0 +1,269 @@
+{
+  "core_acceptance_passed": true,
+  "verified_lamp_controls": [
+    "power",
+    "brightness_up",
+    "brightness_down",
+    "cct_up",
+    "cct_down",
+    "night_mode"
+  ],
+  "timer_10min": {
+    "implemented": true,
+    "transmitted": false,
+    "expiry_verified": false,
+    "operator_instruction": "十分钟的先当正常，因为很少用"
+  },
+  "frequency_hz": 433920000,
+  "nominal_power_dbm": -10,
+  "repeats_per_command": 3,
+  "firmware_sha256": "186201f768b813236f7ddb482195191aa1046e9f1f9ea107f2c1c4af0097e5e9",
+  "flash_bytes": 287233,
+  "static_ram_bytes": 22688,
+  "host_cpp_checks": 230,
+  "python_tests": 5,
+  "evidence": [
+    {
+      "file": "evidence/20261021_233018_481753_power_replay.json",
+      "button": "power",
+      "waveform_completed": true,
+      "elapsed_us": 180240,
+      "feedback": {
+        "reported_by": "user",
+        "before": "off",
+        "after": "on",
+        "verbatim": "灯已亮起"
+      }
+    },
+    {
+      "file": "evidence/20261021_233041_000784_power_replay.json",
+      "button": "power",
+      "waveform_completed": true,
+      "elapsed_us": 180257,
+      "feedback": {
+        "reported_by": "user",
+        "before": "on",
+        "after": "off",
+        "verbatim": "已熄灭"
+      }
+    },
+    {
+      "file": "evidence/20261021_233347_247777_replay_power.json",
+      "button": "power",
+      "waveform_completed": true,
+      "elapsed_us": 179178,
+      "feedback": {
+        "reported_by": "user",
+        "before": "off",
+        "after": "on",
+        "verbatim": "已亮起，继续测试",
+        "effect_verified": true
+      }
+    },
+    {
+      "file": "evidence/20261021_233406_288371_replay_brightness_down.json",
+      "button": "brightness_down",
+      "waveform_completed": true,
+      "elapsed_us": 178070,
+      "feedback": {
+        "reported_by": "user",
+        "verbatim": "现在是暖色最暗的状态",
+        "effect_verified": false,
+        "reason": "亮度已在下限，不能据此判定按键效果"
+      }
+    },
+    {
+      "file": "evidence/20261021_233441_375594_replay_brightness_up.json",
+      "button": "brightness_up",
+      "waveform_completed": true,
+      "elapsed_us": 179294,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "individual",
+        "effect_verified": true,
+        "verbatim": "变亮了一些，再变亮一点，让我再次确认"
+      }
+    },
+    {
+      "file": "evidence/20261021_233519_622119_replay_brightness_up.json",
+      "button": "brightness_up",
+      "waveform_completed": true,
+      "elapsed_us": 179294,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "individual",
+        "effect_verified": true,
+        "verbatim": "再次变亮，确认有效"
+      }
+    },
+    {
+      "file": "evidence/20261021_233533_463657_replay_brightness_down.json",
+      "button": "brightness_down",
+      "waveform_completed": true,
+      "elapsed_us": 178070,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "individual",
+        "effect_verified": false,
+        "verbatim": "似乎没太大反应，能否先变亮三次，然后再变暗"
+      }
+    },
+    {
+      "file": "evidence/20261021_233630_613718_replay_brightness_up.json",
+      "button": "brightness_up",
+      "waveform_completed": true,
+      "elapsed_us": 179294,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "six-command brightness comparison group, not individual measurements",
+        "effect_verified": true,
+        "verbatim": "先变亮，随后变暗，两者都有效"
+      }
+    },
+    {
+      "file": "evidence/20261021_233633_516309_replay_brightness_up.json",
+      "button": "brightness_up",
+      "waveform_completed": true,
+      "elapsed_us": 179294,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "six-command brightness comparison group, not individual measurements",
+        "effect_verified": true,
+        "verbatim": "先变亮，随后变暗，两者都有效"
+      }
+    },
+    {
+      "file": "evidence/20261021_233636_410053_replay_brightness_up.json",
+      "button": "brightness_up",
+      "waveform_completed": true,
+      "elapsed_us": 179294,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "six-command brightness comparison group, not individual measurements",
+        "effect_verified": true,
+        "verbatim": "先变亮，随后变暗，两者都有效"
+      }
+    },
+    {
+      "file": "evidence/20261021_233645_180537_replay_brightness_down.json",
+      "button": "brightness_down",
+      "waveform_completed": true,
+      "elapsed_us": 178070,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "six-command brightness comparison group, not individual measurements",
+        "effect_verified": true,
+        "verbatim": "先变亮，随后变暗，两者都有效"
+      }
+    },
+    {
+      "file": "evidence/20261021_233648_074301_replay_brightness_down.json",
+      "button": "brightness_down",
+      "waveform_completed": true,
+      "elapsed_us": 178981,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "six-command brightness comparison group, not individual measurements",
+        "effect_verified": true,
+        "verbatim": "先变亮，随后变暗，两者都有效"
+      }
+    },
+    {
+      "file": "evidence/20261021_233650_969658_replay_brightness_down.json",
+      "button": "brightness_down",
+      "waveform_completed": true,
+      "elapsed_us": 178981,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "six-command brightness comparison group, not individual measurements",
+        "effect_verified": true,
+        "verbatim": "先变亮，随后变暗，两者都有效"
+      }
+    },
+    {
+      "file": "evidence/20261021_233716_778597_replay_cct_up.json",
+      "button": "cct_up",
+      "waveform_completed": true,
+      "elapsed_us": 180015,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "three-command group",
+        "effect_verified": true,
+        "verbatim": "明显更白／更冷"
+      }
+    },
+    {
+      "file": "evidence/20261021_233719_673615_replay_cct_up.json",
+      "button": "cct_up",
+      "waveform_completed": true,
+      "elapsed_us": 180015,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "three-command group",
+        "effect_verified": true,
+        "verbatim": "明显更白／更冷"
+      }
+    },
+    {
+      "file": "evidence/20261021_233722_563085_replay_cct_up.json",
+      "button": "cct_up",
+      "waveform_completed": true,
+      "elapsed_us": 180015,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "three-command group",
+        "effect_verified": true,
+        "verbatim": "明显更白／更冷"
+      }
+    },
+    {
+      "file": "evidence/20261021_233739_208715_replay_cct_down.json",
+      "button": "cct_down",
+      "waveform_completed": true,
+      "elapsed_us": 179771,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "three-command group",
+        "effect_verified": true,
+        "verbatim": "明显更黄／更暖"
+      }
+    },
+    {
+      "file": "evidence/20261021_233742_096829_replay_cct_down.json",
+      "button": "cct_down",
+      "waveform_completed": true,
+      "elapsed_us": 179771,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "three-command group",
+        "effect_verified": true,
+        "verbatim": "明显更黄／更暖"
+      }
+    },
+    {
+      "file": "evidence/20261021_233744_984685_replay_cct_down.json",
+      "button": "cct_down",
+      "waveform_completed": true,
+      "elapsed_us": 179771,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "three-command group",
+        "effect_verified": true,
+        "verbatim": "明显更黄／更暖"
+      }
+    },
+    {
+      "file": "evidence/20261021_233759_319288_replay_night_mode.json",
+      "button": "night_mode",
+      "waveform_completed": true,
+      "elapsed_us": 179544,
+      "feedback": {
+        "reported_by": "user",
+        "scope": "individual",
+        "effect_verified": true,
+        "verbatim": "已进入夜灯模式"
+      }
+    }
+  ],
+  "successful_waveform_operations": 20
+}

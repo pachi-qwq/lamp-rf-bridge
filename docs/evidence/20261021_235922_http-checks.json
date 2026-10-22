@@ -1,0 +1,77 @@
+{
+  "url": "http://<device-ip>",
+  "checks": [
+    {
+      "name": "unauthenticated_status_401",
+      "passed": true
+    },
+    {
+      "name": "real_radio_idle",
+      "passed": true
+    },
+    {
+      "name": "asset_/",
+      "passed": true
+    },
+    {
+      "name": "security_headers_/",
+      "passed": true
+    },
+    {
+      "name": "asset_/style.css",
+      "passed": true
+    },
+    {
+      "name": "security_headers_/style.css",
+      "passed": true
+    },
+    {
+      "name": "asset_/app.js",
+      "passed": true
+    },
+    {
+      "name": "security_headers_/app.js",
+      "passed": true
+    },
+    {
+      "name": "csrf_required",
+      "passed": true
+    },
+    {
+      "name": "unknown_button_rejected",
+      "passed": true
+    },
+    {
+      "name": "malformed_request_id_rejected",
+      "passed": true
+    },
+    {
+      "name": "cross_origin_rejected",
+      "passed": true
+    },
+    {
+      "name": "unsupported_format_rejected",
+      "passed": true
+    },
+    {
+      "name": "get_cannot_transmit",
+      "passed": true
+    },
+    {
+      "name": "wifi_setup_not_exposed_on_lan",
+      "passed": true
+    },
+    {
+      "name": "negative_checks_did_not_transmit",
+      "passed": true
+    }
+  ],
+  "before_attempts": 0,
+  "after_attempts": 0,
+  "rf": {
+    "ready": true,
+    "marcstate": 1,
+    "bus_error": 0
+  },
+  "network_connected": true
+}

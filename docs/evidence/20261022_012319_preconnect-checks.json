@@ -1,0 +1,78 @@
+{
+  "checks": [
+    {
+      "name": "status_with_0_idle",
+      "passed": true
+    },
+    {
+      "name": "no_five_second_block_with_0_idle",
+      "passed": true
+    },
+    {
+      "name": "status_with_1_idle",
+      "passed": true
+    },
+    {
+      "name": "no_five_second_block_with_1_idle",
+      "passed": true
+    },
+    {
+      "name": "status_with_2_idle",
+      "passed": true
+    },
+    {
+      "name": "no_five_second_block_with_2_idle",
+      "passed": true
+    },
+    {
+      "name": "delayed_first_byte_still_completes",
+      "passed": true
+    },
+    {
+      "name": "queued_request_after_delayed_client",
+      "passed": true
+    },
+    {
+      "name": "unknown_button_still_rejected_under_contention",
+      "passed": true
+    },
+    {
+      "name": "idle_preconnect_guard_exercised",
+      "passed": true
+    },
+    {
+      "name": "no_rf_transmission",
+      "passed": true
+    }
+  ],
+  "measurements": [
+    {
+      "idle_connections": 0,
+      "roundtrip_ms": 43.8,
+      "http_status": 200
+    },
+    {
+      "idle_connections": 1,
+      "roundtrip_ms": 113.9,
+      "http_status": 200
+    },
+    {
+      "idle_connections": 2,
+      "roundtrip_ms": 289.2,
+      "http_status": 200
+    },
+    {
+      "scenario": "120ms delayed first byte with queued request",
+      "queued_roundtrip_ms": 160.6,
+      "first_status": "HTTP/1.1 200 OK"
+    }
+  ],
+  "guard_count_before": 0,
+  "guard_count_after": 4,
+  "rf_attempts_unchanged": true,
+  "rf": {
+    "ready": true,
+    "marcstate": 1,
+    "bus_error": 0
+  }
+}

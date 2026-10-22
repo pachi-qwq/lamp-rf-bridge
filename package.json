@@ -1,0 +1,12 @@
+{
+  "name": "lamp-rf-bridge-checks",
+  "private": true,
+  "description": "Repository documentation checks only; no frontend runtime dependencies.",
+  "scripts": {
+    "lint:markdown": "markdownlint-cli2"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "0.17.2"
+  },
+  "license": "MIT"
+}

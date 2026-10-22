@@ -1,0 +1,18 @@
+{
+  "status_roundtrip_ms": [
+    205.7,
+    48.5,
+    30.9,
+    47.6
+  ],
+  "command_roundtrip_ms": 240.2,
+  "http_status": 200,
+  "response": {
+    "ok": true,
+    "message": "已发送",
+    "button": "brightness_up",
+    "attempt": 9,
+    "cooldown_ms": 239,
+    "lamp_state_confirmed": false
+  }
+}

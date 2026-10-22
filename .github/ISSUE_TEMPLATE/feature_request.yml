@@ -1,0 +1,17 @@
+name: Feature request / 功能建议
+description: A concrete use case or device-support proposal / 具体场景或设备支持建议
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Use case / 使用场景
+      description: "What cannot be done today? 当前有什么需求无法完成？"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal and alternatives / 建议及替代办法
+      description: "Device support needs owned/authorized hardware and real captures; frequency alone is insufficient. 新设备需有授权硬件及真实采样，频率相同不足以证明兼容。"
+    validations:
+      required: true

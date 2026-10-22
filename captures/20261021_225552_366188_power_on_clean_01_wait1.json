@@ -1,0 +1,50 @@
+{
+  "label": "power_on_clean_01_wait1",
+  "captured_at": "2026-10-21T22:56:13+08:00",
+  "port": "COM4",
+  "settings": {
+    "type": "status",
+    "phase": 2,
+    "ready": true,
+    "frequency_hz": 433920000,
+    "crystal_hz": 26000000,
+    "profile": "default",
+    "bandwidth_hz": 203125,
+    "data_rate_millibaud": 4797935,
+    "marcstate": 13,
+    "rssi_dbm_x2": -183,
+    "carrier_sense": true,
+    "gdo0": 1,
+    "gdo2": 1
+  },
+  "armed": {
+    "type": "armed",
+    "duration_ms": 1000,
+    "wait_ms": 60000,
+    "trigger_dbm_x2": -160,
+    "immediate": false
+  },
+  "capture": {
+    "type": "capture_begin",
+    "count": 266,
+    "pre_count": 3,
+    "post_count": 263,
+    "reason": "duration",
+    "triggered": true,
+    "overflow": false,
+    "prehistory_clipped": false,
+    "ambiguous_edges": 2,
+    "zero_durations": 0,
+    "elapsed_us": 20505186,
+    "tail_us": 749076,
+    "tail_level": 1,
+    "rssi_peak_dbm_x2": -75,
+    "rssi_trigger_dbm_x2": -75,
+    "carrier_samples": 10253,
+    "frequency_hz": 433920000,
+    "profile": "default",
+    "idle_error": 0
+  },
+  "boundary_segments_may_be_partial": true,
+  "remote_attribution_confirmed": false
+}

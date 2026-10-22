@@ -1,0 +1,85 @@
+{
+  "measurements": [
+    {
+      "load_ms": 100.2,
+      "resources": [
+        {
+          "path": "/",
+          "roundtrip_ms": 46.1,
+          "ttfb_ms": 42.8,
+          "bytes": 4530,
+          "gzip": true
+        },
+        {
+          "path": "/style.css",
+          "roundtrip_ms": 73.3,
+          "ttfb_ms": 64.7,
+          "bytes": 8044,
+          "gzip": true
+        },
+        {
+          "path": "/app.js",
+          "roundtrip_ms": 98.3,
+          "ttfb_ms": 93.2,
+          "bytes": 7433,
+          "gzip": true
+        }
+      ]
+    },
+    {
+      "load_ms": 114.0,
+      "resources": [
+        {
+          "path": "/",
+          "roundtrip_ms": 70.1,
+          "ttfb_ms": 69.3,
+          "bytes": 4530,
+          "gzip": true
+        },
+        {
+          "path": "/style.css",
+          "roundtrip_ms": 83.6,
+          "ttfb_ms": 75.7,
+          "bytes": 8044,
+          "gzip": true
+        },
+        {
+          "path": "/app.js",
+          "roundtrip_ms": 112.8,
+          "ttfb_ms": 101.6,
+          "bytes": 7433,
+          "gzip": true
+        }
+      ]
+    },
+    {
+      "load_ms": 86.5,
+      "resources": [
+        {
+          "path": "/",
+          "roundtrip_ms": 36.6,
+          "ttfb_ms": 36.3,
+          "bytes": 4530,
+          "gzip": true
+        },
+        {
+          "path": "/style.css",
+          "roundtrip_ms": 61.3,
+          "ttfb_ms": 58.5,
+          "bytes": 8044,
+          "gzip": true
+        },
+        {
+          "path": "/app.js",
+          "roundtrip_ms": 85.4,
+          "ttfb_ms": 80.0,
+          "bytes": 7433,
+          "gzip": true
+        }
+      ]
+    }
+  ],
+  "median_all_resources_ms": 100.2,
+  "rf_attempts_unchanged": true,
+  "note": "PC real HTTP parallel resource loading; not an iOS paint or native launch timing"
+}

@@ -1,0 +1,87 @@
+{
+  "checks": [
+    {
+      "name": "public_login_shell_no_system_dialog",
+      "passed": true
+    },
+    {
+      "name": "ios_autofill_semantics",
+      "passed": true
+    },
+    {
+      "name": "unauthenticated_probe_no_system_dialog",
+      "passed": true
+    },
+    {
+      "name": "wrong_password_inline_error_not_native_dialog",
+      "passed": true
+    },
+    {
+      "name": "login_csrf_required",
+      "passed": true
+    },
+    {
+      "name": "cross_origin_login_rejected",
+      "passed": true
+    },
+    {
+      "name": "plain_password_not_accepted",
+      "passed": true
+    },
+    {
+      "name": "login_remember_0",
+      "passed": true
+    },
+    {
+      "name": "cookie_httponly_samesite",
+      "passed": true
+    },
+    {
+      "name": "cookie_lifetime_matches_choice",
+      "passed": true
+    },
+    {
+      "name": "challenge_is_single_use",
+      "passed": true
+    },
+    {
+      "name": "cookie_access_and_trust_status",
+      "passed": true
+    },
+    {
+      "name": "session_api_still_whitelists_buttons",
+      "passed": true
+    },
+    {
+      "name": "login_remember_1",
+      "passed": true
+    },
+    {
+      "name": "cookie_httponly_samesite",
+      "passed": true
+    },
+    {
+      "name": "cookie_lifetime_matches_choice",
+      "passed": true
+    },
+    {
+      "name": "challenge_is_single_use",
+      "passed": true
+    },
+    {
+      "name": "cookie_access_and_trust_status",
+      "passed": true
+    },
+    {
+      "name": "session_and_trusted_tokens_distinct",
+      "passed": true
+    },
+    {
+      "name": "no_rf_transmission",
+      "passed": true
+    }
+  ],
+  "before_attempts": 0,
+  "after_attempts": 0,
+  "all_passed": true
+}
