@@ -17,7 +17,7 @@ only: it does not push branches, open a PR, change repository settings or instal
 | Completed locally | Node.js 24 action upgrade | Stable releases pinned by SHA; updated workflow still needs its own remote run |
 | Pending manual action | main, default branch and PR | Only the review branch exists remotely and is currently the default |
 | Pending manual action | Private reporting and metadata | Private Vulnerability Reporting is disabled; description/topics are empty |
-| Pending hardware | Cleanup firmware regression | No ESP32 USB serial device was detected; see the [test sequence](testing.md#cleanup-regression) |
+| Deferred for source PR | Cleanup firmware regression | Owner accepts deferral; remains pending before firmware release; see the [test sequence](testing.md#cleanup-regression) |
 | Pending binary release | Third-party distribution materials | LGPL corresponding sources/relinking materials and SDK terms |
 | Not planned for 0.1.0 | OTA, cloud, offline control and broad compatibility | Outside the verified implementation |
 
@@ -62,7 +62,8 @@ gh repo edit pachi-qwq/lamp-rf-bridge --default-branch main
    permission. GitHub requires more than one branch to [change the default](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch).
 3. Open a PR with **base main** and **compare review/open-source-preparation**. Inspect the full
    source diff and latest PR checks.
-4. Complete the pending hardware regression before final acceptance of the firmware.
+4. Record the owner's hardware-regression deferral for the source PR. Complete the regression
+   before accepting a new firmware binary for release.
 5. Merge using a merge commit to retain the reviewed commits, then enable main protection against
    direct/force pushes and require the actual firmware and quality checks.
 
@@ -99,7 +100,9 @@ These settings were inspected read-only and remain manual owner actions.
   carrier/power/range, additional devices or lamp-state feedback from CI success.
 
 Hardware regression and binary-distribution obligations block a validated firmware release.
-Updated CI, review approval and the hardware acceptance decision remain merge gates.
+Updated CI and owner review remain source-PR merge gates. The owner deferred hardware regression
+for this documentation/CI follow-up because it changes no runtime code; existing device use need
+not be interrupted. This decision does not verify the earlier authentication clock changes.
 
 <!-- section: maintenance -->
 ## Maintenance checks

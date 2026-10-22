@@ -16,7 +16,7 @@
 | 本地已完成 | Actions 升级至 Node.js 24 | 稳定版本固定 SHA；更新后的工作流仍待远程运行 |
 | 待人工操作 | main、默认分支及 PR | 远程仅有评审分支，当前默认分支也是它 |
 | 待人工操作 | 私密报告及仓库资料 | Private Vulnerability Reporting 未开启；简介、Topics 为空 |
-| 待实机验证 | 整理后固件回归 | 未发现 ESP32 USB 串口；见[测试顺序](testing.md#cleanup-regression) |
+| 源码 PR 暂缓 | 整理后固件回归 | 所有者接受暂缓，固件发布前仍待验证；见[测试顺序](testing.md#cleanup-regression) |
 | 待二进制发布准备 | 第三方分发材料 | LGPL 对应源码、重链接材料及 SDK 条款 |
 | 0.1.0 暂不实施 | OTA、云端、离线控制及广泛兼容 | 超出已验证实现 |
 
@@ -59,7 +59,7 @@ gh repo edit pachi-qwq/lamp-rf-bridge --default-branch main
    GitHub 要求仓库有多个分支后才能[更改默认分支](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch)。
 3. 创建 **base main**、**compare review/open-source-preparation** 的 PR，
    检查完整源码 Diff 及最新 PR 检查。
-4. 在固件最终验收前完成待办实机回归。
+4. 记录所有者对源码 PR 实机回归的暂缓决定，在新固件二进制发布验收前再完成回归。
 5. 使用 merge commit 保留已评审提交，再为 main 开启禁止直接/强制推送、
    必须通过实际 firmware、quality 检查的保护。
 
@@ -93,7 +93,8 @@ gh repo edit pachi-qwq/lamp-rf-bridge --default-branch main
   不从 CI 成功推导载波/功率/距离校准、更多设备兼容性或灯具状态回读。
 
 实机回归与二进制分发义务阻塞已验收固件的正式发布。
-更新后 CI、评审批准及硬件验收结论仍是最终合并条件。
+更新后 CI 和所有者评审仍是源码 PR 合并条件。本轮文档/CI 整改未改运行代码，
+所有者接受暂缓实机回归，无需中断现有设备使用；该决定不代表早先认证计时改动已实测。
 
 <!-- section: maintenance -->
 ## 后续维护

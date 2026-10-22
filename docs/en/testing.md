@@ -105,7 +105,10 @@ the owner's existing access and revoke only temporary test tokens. Never reset N
 
 The 64-bit expiry and Digest epoch logic have boundary tests, but eight-hour expiry and a full
 49.7-day run were not physically exercised. Wi-Fi recovery is an observation target, not a claimed
-result. The [release checklist](release-checklist.md) keeps this regression as an acceptance gate.
+result. The owner deferred this regression for the current source PR because the documentation/CI
+follow-up changes no runtime code. Existing device use can continue without reflashing. The earlier
+authentication clock changes remain unverified on hardware; the [release checklist](release-checklist.md)
+keeps the regression as a firmware-release gate, not a current source-PR merge gate.
 
 <!-- section: limits -->
 ## Unverified limits

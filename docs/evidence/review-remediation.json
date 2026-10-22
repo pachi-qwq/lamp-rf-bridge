@@ -91,7 +91,14 @@
       "real restart and old challenge invalidation",
       "one power/brightness command and duplicate request handling",
       "WLAN interruption and recovery"
-    ]
+    ],
+    "owner_deferral": {
+      "date": "2026-10-23",
+      "applies_to": "Current source PR acceptance; no requirement to reflash the owner's operating device",
+      "reason": "Owner reports normal device operation; documentation/CI remediation changes no runtime code",
+      "verification_scope": "Not a hardware pass for the initial cleanup authentication clock fix; regression remains pending before new firmware release"
+    },
+    "current_source_pr_merge_gate": false
   },
   "privacy": {
     "tracked_files_checked": 211,
@@ -117,7 +124,7 @@
     "private_vulnerability_reporting_enabled": false,
     "private_conduct_channel": "Pending owner designation"
   },
-  "merge_readiness": "Pending updated hosted CI, owner review and current-firmware hardware acceptance",
+  "merge_readiness": "Pending updated hosted CI and owner review; hardware regression deferred by owner for the source PR",
   "firmware_release_blockers": [
     "Current firmware hardware regression not completed",
     "Complete binary-license distribution materials not prepared"
