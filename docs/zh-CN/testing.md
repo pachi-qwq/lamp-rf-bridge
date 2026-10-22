@@ -7,7 +7,7 @@
 <!-- section: local -->
 ## 本地软件结果
 
-在记录的 Windows 环境中：
+以下为此前 Windows 环境开源整理/评审时记录的结果，本次状态同步仅修改文档：
 
 | 检查 | 实际结果 |
 | --- | --- |
@@ -17,19 +17,37 @@
 | JavaScript MD5/Digest 向量 | 实际第三方及客户端代码 8 项通过 |
 | 工作流语法 | actionlint 1.7.7 通过 |
 | 跨平台生成器 | Ubuntu/WSL Python 3.12.3 的两个 --check 均通过 |
-| Markdown、仓库一致性及 Diff | 见[本轮审计记录](../evidence/open-source-audit.json) |
+| Markdown、仓库一致性及 Diff | 见[初次本地审计快照](../evidence/open-source-audit.json) |
 
-当前 Web 构建应用 Flash 为 895689 / 1310720 字节（68.3%），静态 RAM
+已记录的本地 Web 构建应用 Flash 为 895689 / 1310720 字节（68.3%），静态 RAM
 49680 / 327680（15.2%），动态堆另计。二进制 SHA-256 为
 `606c73da7fde56dd3705b9baf19658b5eda139ff0a5daf23086a04c17b3f1119`。
 该二进制**未烧录**，包含格式、双语注释、CSV 字节保留、统一 gzip 元数据及第三方页面许可。
 独立认证期限修复新增十项边界测试，不表示实际连续运行了 49 天。
 
 复现软件检查见[开发命令](development.md)。
-原版 [GitHub CI](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39805827721)
-已对 8ca1b79 通过 firmware、quality，包含 Ubuntu 主机编译路径。
-后续[评审记录](../evidence/review-remediation.json)区分本地重跑结果与尚未推送的
-Node.js 24 Actions 升级；更新后的工作流仍需单独远程运行。
+
+<!-- section: hosted-ci -->
+<a id="hosted-ci"></a>
+
+## GitHub Actions 结果
+
+以下托管运行已按各自提交核验：
+
+| 事件 | 提交 | 已验证结果 |
+| --- | --- | --- |
+| 初次推送 | 8ca1b79 | [运行 39805827721](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39805827721)：firmware、quality 成功 |
+| Node.js 24 升级后推送 | 66dcbfd | [运行 39815739001](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39815739001)：firmware、quality 成功 |
+| PR #1 | 66dcbfd | [运行 39817485832](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39817485832)：[firmware](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39817485832/job/119959678894)、[quality](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39817485832/job/119959679303) 成功 |
+
+PR #1 以空基线 main 为目标，保持开放；main 已设为默认分支。
+成功的 PR 运行覆盖 Node.js 24 Actions 和 Ubuntu 主机编译路径。
+后续文档提交也须通过其自身的 [PR 检查](https://github.com/pachi-qwq/lamp-rf-bridge/pull/1/checks)，
+不能用 66dcbfd 的成功代表后续 HEAD 已通过。
+
+托管 CI 在没有 ESP32、CC1101 或灯具的环境中构建及测试软件，不完成下述实机回归。
+[初次审计](../evidence/open-source-audit.json)及[评审快照](../evidence/review-remediation.json)
+保留当时状态，包括当时待运行的 CI；本次文档同步没有追溯改写这些记录。
 
 <!-- section: history -->
 ## 历史真实设备证据
@@ -81,7 +99,7 @@ Node.js 24 Actions 升级；更新后的工作流仍需单独远程运行。
 
 ## 整理后固件回归（Pending）
 
-本轮只发现 COM1（ACPI 串口），未识别到 ESP32 USB 转串口。
+此前评审只发现 COM1（ACPI 串口），未识别到 ESP32 USB 转串口。
 没有尝试烧录、网络测试或射频发送；以下项目在取得真实证据前均保持 Pending。
 
 | 顺序 | 最小检查 | 预期观察 |

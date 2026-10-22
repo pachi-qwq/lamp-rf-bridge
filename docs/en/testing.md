@@ -8,7 +8,8 @@ connected, flashed or RF-transmitted during the open-source cleanup.
 <!-- section: local -->
 ## Local software results
 
-On the recorded Windows environment:
+The following results were recorded during the earlier Windows cleanup/review. This status update
+changes documentation only:
 
 | Check | Actual result |
 | --- | --- |
@@ -18,20 +19,39 @@ On the recorded Windows environment:
 | JavaScript MD5/Digest vectors | 8 checks passed using actual vendor/client code |
 | Workflow syntax | actionlint 1.7.7 passed |
 | Cross-platform generators | Both --check commands passed on Ubuntu/WSL Python 3.12.3 |
-| Markdown, repository consistency and diff | See [current audit record](../evidence/open-source-audit.json) |
+| Markdown, repository consistency and diff | See [original local audit snapshot](../evidence/open-source-audit.json) |
 
-The current web build used 895689 / 1310720 application bytes (68.3%) and 49680 / 327680 static RAM
-bytes (15.2%); dynamic heap is additional. Its binary SHA-256 is
+The recorded local web build used 895689 / 1310720 application bytes (68.3%) and 49680 / 327680
+static RAM bytes (15.2%); dynamic heap is additional. Its binary SHA-256 is
 `606c73da7fde56dd3705b9baf19658b5eda139ff0a5daf23086a04c17b3f1119`.
 This binary was **not flashed**. Source formatting, bilingual comments, preserved CSV bytes,
 canonical gzip metadata and an embedded third-party license are included. The separate
 authentication expiry fix has ten new boundary checks; it is not a claim of a 49-day physical run.
 
 Use the [development commands](development.md) to reproduce the software checks.
-The original [GitHub CI](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39805827721) passed
-firmware and quality, including the Ubuntu host-compiler path, for 8ca1b79. The subsequent
-[review record](../evidence/review-remediation.json) distinguishes repeated local results from the
-unpushed Node.js 24 action upgrade; that workflow still needs its own hosted run.
+
+<!-- section: hosted-ci -->
+<a id="hosted-ci"></a>
+
+## GitHub Actions results
+
+The following hosted runs are verified for their listed commits:
+
+| Event | Commit | Verified result |
+| --- | --- | --- |
+| Original push | 8ca1b79 | [Run 39805827721](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39805827721): firmware and quality succeeded |
+| Push after Node.js 24 upgrade | 66dcbfd | [Run 39815739001](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39815739001): firmware and quality succeeded |
+| PR #1 | 66dcbfd | [Run 39817485832](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39817485832): [firmware](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39817485832/job/119959678894) and [quality](https://github.com/pachi-qwq/lamp-rf-bridge/actions/runs/39817485832/job/119959679303) succeeded |
+
+PR #1 is open against the empty-baseline main, now the default branch. The successful PR run covers
+the Node.js 24 Actions and Ubuntu host-compiler path. Later documentation commits need their own
+passing [PR checks](https://github.com/pachi-qwq/lamp-rf-bridge/pull/1/checks); success at 66dcbfd
+does not certify a later head.
+
+Hosted CI builds/tests software without ESP32, CC1101 or a lamp. It does not complete the hardware
+regression below. The [original audit](../evidence/open-source-audit.json) and
+[review snapshot](../evidence/review-remediation.json) retain their historical states, including
+then-pending CI; those records have not been rewritten by this documentation update.
 
 <!-- section: history -->
 ## Historical real-device evidence
