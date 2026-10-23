@@ -1,0 +1,25 @@
+* text=auto
+*.cpp text eol=lf
+*.h text eol=lf
+*.md text eol=lf
+*.ini text eol=lf
+*.py text eol=lf
+*.ps1 text eol=crlf
+*.serial.log -text whitespace=cr-at-eol
+docs/evidence/*.log -text whitespace=cr-at-eol
+
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+
+*.svg text eol=lf
+*.webmanifest text eol=lf
+*.png -text
+
+# Preserve captured CSV bytes and their provenance hashes across platforms.
+# 跨平台保留采样 CSV 原始字节及来源哈希。
+*.csv -text whitespace=cr-at-eol
+
+# Preserve upstream license layout, including intentional trailing spaces.
+# 保留上游许可原始排版，包括有意保留的行末空格。
+LICENSES/*.txt whitespace=-blank-at-eol

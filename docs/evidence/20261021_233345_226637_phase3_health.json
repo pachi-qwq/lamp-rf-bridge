@@ -1,0 +1,329 @@
+{
+  "started_at": "2026-10-21T23:33:45.226637+08:00",
+  "port": "COM4",
+  "send_requested": false,
+  "operator_feedback": null,
+  "button": null,
+  "raw_log": "20261021_233345_226637_phase3_health.serial.log",
+  "firmware_sha256": "186201f768b813236f7ddb482195191aa1046e9f1f9ea107f2c1c4af0097e5e9",
+  "before": {
+    "type": "status",
+    "phase": 3,
+    "ready": true,
+    "bus_error": 0,
+    "marcstate": 1,
+    "frequency_hz": 433920000,
+    "nominal_power_dbm": -10,
+    "repeats": 3,
+    "plan_us": 174815,
+    "attempts": 0,
+    "cooldown_ready": true,
+    "buttons": [
+      "power",
+      "brightness_up",
+      "brightness_down",
+      "cct_up",
+      "cct_down",
+      "night_mode",
+      "timer_10min"
+    ]
+  },
+  "guard_checks": {
+    "rejected_commands": 3,
+    "idle_status_samples": 10,
+    "attempts_unchanged": true
+  },
+  "host_checks_passed": true,
+  "serial_records": [
+    {
+      "type": "boot",
+      "phase": 3,
+      "bus_error": 0,
+      "identity_error": 0,
+      "partnum": 0,
+      "version": 20,
+      "automatic_transmit": false
+    },
+    {
+      "type": "tx_setup",
+      "ready": true,
+      "last_spi_command": 254
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "error",
+      "message": "unknown_command"
+    },
+    {
+      "type": "error",
+      "message": "unknown_command"
+    },
+    {
+      "type": "error",
+      "message": "unknown_command"
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174815,
+      "attempts": 0,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    }
+  ]
+}

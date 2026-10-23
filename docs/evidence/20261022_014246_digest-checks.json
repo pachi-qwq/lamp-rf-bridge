@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "name": "client_survives_other_challenge_0",
+      "passed": true
+    },
+    {
+      "name": "client_survives_other_challenge_1",
+      "passed": true
+    },
+    {
+      "name": "client_survives_other_challenge_2",
+      "passed": true
+    },
+    {
+      "name": "client_survives_other_challenge_3",
+      "passed": true
+    },
+    {
+      "name": "client_survives_other_challenge_4",
+      "passed": true
+    },
+    {
+      "name": "digest_bound_to_request_uri",
+      "passed": false
+    },
+    {
+      "name": "invalid_nonce_signature_rejected",
+      "passed": true
+    },
+    {
+      "name": "wrong_password_rejected",
+      "passed": true
+    }
+  ],
+  "all_passed": false,
+  "radio_commands_sent": 0
+}

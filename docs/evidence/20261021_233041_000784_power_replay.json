@@ -1,0 +1,116 @@
+{
+  "started_at": "2026-10-21T23:30:41.000784+08:00",
+  "port": "COM4",
+  "send_requested": true,
+  "operator_feedback": {
+    "reported_by": "user",
+    "before": "on",
+    "after": "off",
+    "verbatim": "已熄灭"
+  },
+  "raw_log": "20261021_233041_000784_power_replay.serial.log",
+  "firmware_sha256": "4ca97c1b59bc03087621881a277d27bf1a8e02b201885c682cddb15a22997674",
+  "before": {
+    "type": "status",
+    "phase": 3,
+    "ready": true,
+    "bus_error": 0,
+    "marcstate": 1,
+    "frequency_hz": 433920000,
+    "nominal_power_dbm": -10,
+    "repeats": 3,
+    "plan_us": 175076,
+    "attempts": 1,
+    "cooldown_ready": true,
+    "commands": [
+      "status",
+      "send power"
+    ]
+  },
+  "tx_result": {
+    "type": "tx_result",
+    "button": "power",
+    "attempt": 2,
+    "waveform_completed": true,
+    "radio_error": 0,
+    "idle_error": 0,
+    "rmt_error": 0,
+    "tx_marcstate": 19,
+    "final_marcstate": 1,
+    "elapsed_us": 180257,
+    "lamp_effect": "awaiting_operator_observation"
+  },
+  "after": {
+    "type": "status",
+    "phase": 3,
+    "ready": true,
+    "bus_error": 0,
+    "marcstate": 1,
+    "frequency_hz": 433920000,
+    "nominal_power_dbm": -10,
+    "repeats": 3,
+    "plan_us": 175076,
+    "attempts": 2,
+    "cooldown_ready": false,
+    "commands": [
+      "status",
+      "send power"
+    ]
+  },
+  "host_checks_passed": true,
+  "serial_records": [
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 175076,
+      "attempts": 1,
+      "cooldown_ready": true,
+      "commands": [
+        "status",
+        "send power"
+      ]
+    },
+    {
+      "type": "tx_begin",
+      "button": "power",
+      "hex": "FFFF02",
+      "attempt": 2
+    },
+    {
+      "type": "tx_result",
+      "button": "power",
+      "attempt": 2,
+      "waveform_completed": true,
+      "radio_error": 0,
+      "idle_error": 0,
+      "rmt_error": 0,
+      "tx_marcstate": 19,
+      "final_marcstate": 1,
+      "elapsed_us": 180257,
+      "lamp_effect": "awaiting_operator_observation"
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 175076,
+      "attempts": 2,
+      "cooldown_ready": false,
+      "commands": [
+        "status",
+        "send power"
+      ]
+    }
+  ]
+}

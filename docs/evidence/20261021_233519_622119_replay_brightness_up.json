@@ -1,0 +1,137 @@
+{
+  "started_at": "2026-10-21T23:35:19.622119+08:00",
+  "port": "COM4",
+  "send_requested": true,
+  "operator_feedback": {
+    "reported_by": "user",
+    "scope": "individual",
+    "effect_verified": true,
+    "verbatim": "再次变亮，确认有效"
+  },
+  "button": "brightness_up",
+  "raw_log": "20261021_233519_622119_replay_brightness_up.serial.log",
+  "firmware_sha256": "186201f768b813236f7ddb482195191aa1046e9f1f9ea107f2c1c4af0097e5e9",
+  "before": {
+    "type": "status",
+    "phase": 3,
+    "ready": true,
+    "bus_error": 0,
+    "marcstate": 1,
+    "frequency_hz": 433920000,
+    "nominal_power_dbm": -10,
+    "repeats": 3,
+    "plan_us": 174797,
+    "attempts": 3,
+    "cooldown_ready": true,
+    "buttons": [
+      "power",
+      "brightness_up",
+      "brightness_down",
+      "cct_up",
+      "cct_down",
+      "night_mode",
+      "timer_10min"
+    ]
+  },
+  "tx_result": {
+    "type": "tx_result",
+    "button": "brightness_up",
+    "attempt": 4,
+    "waveform_completed": true,
+    "radio_error": 0,
+    "idle_error": 0,
+    "rmt_error": 0,
+    "tx_marcstate": 19,
+    "final_marcstate": 1,
+    "elapsed_us": 179294,
+    "lamp_effect": "awaiting_operator_observation"
+  },
+  "after": {
+    "type": "status",
+    "phase": 3,
+    "ready": true,
+    "bus_error": 0,
+    "marcstate": 1,
+    "frequency_hz": 433920000,
+    "nominal_power_dbm": -10,
+    "repeats": 3,
+    "plan_us": 174797,
+    "attempts": 4,
+    "cooldown_ready": false,
+    "buttons": [
+      "power",
+      "brightness_up",
+      "brightness_down",
+      "cct_up",
+      "cct_down",
+      "night_mode",
+      "timer_10min"
+    ]
+  },
+  "host_checks_passed": true,
+  "serial_records": [
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174797,
+      "attempts": 3,
+      "cooldown_ready": true,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    },
+    {
+      "type": "tx_begin",
+      "button": "brightness_up",
+      "hex": "FFFF0A",
+      "attempt": 4
+    },
+    {
+      "type": "tx_result",
+      "button": "brightness_up",
+      "attempt": 4,
+      "waveform_completed": true,
+      "radio_error": 0,
+      "idle_error": 0,
+      "rmt_error": 0,
+      "tx_marcstate": 19,
+      "final_marcstate": 1,
+      "elapsed_us": 179294,
+      "lamp_effect": "awaiting_operator_observation"
+    },
+    {
+      "type": "status",
+      "phase": 3,
+      "ready": true,
+      "bus_error": 0,
+      "marcstate": 1,
+      "frequency_hz": 433920000,
+      "nominal_power_dbm": -10,
+      "repeats": 3,
+      "plan_us": 174797,
+      "attempts": 4,
+      "cooldown_ready": false,
+      "buttons": [
+        "power",
+        "brightness_up",
+        "brightness_down",
+        "cct_up",
+        "cct_down",
+        "night_mode",
+        "timer_10min"
+      ]
+    }
+  ]
+}

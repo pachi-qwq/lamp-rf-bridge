@@ -1,0 +1,95 @@
+{
+  "checks": [
+    {
+      "name": "unauth_cannot_enroll",
+      "passed": true
+    },
+    {
+      "name": "remember_authenticated",
+      "passed": true
+    },
+    {
+      "name": "cookie_flags",
+      "passed": true
+    },
+    {
+      "name": "random_cookie_256_bits",
+      "passed": true
+    },
+    {
+      "name": "cookie_only_no_digest",
+      "passed": true
+    },
+    {
+      "name": "cookie_opens_control_page",
+      "passed": true
+    },
+    {
+      "name": "forged_cookie_rejected",
+      "passed": true
+    },
+    {
+      "name": "duplicate_cookie_rejected",
+      "passed": true
+    },
+    {
+      "name": "cookie_still_needs_csrf",
+      "passed": true
+    },
+    {
+      "name": "cookie_cross_origin_blocked",
+      "passed": true
+    },
+    {
+      "name": "remember_get_rejected",
+      "passed": true
+    },
+    {
+      "name": "repeat_trust_is_idempotent",
+      "passed": true
+    },
+    {
+      "name": "remember_authenticated",
+      "passed": true
+    },
+    {
+      "name": "cookie_flags",
+      "passed": true
+    },
+    {
+      "name": "random_cookie_256_bits",
+      "passed": true
+    },
+    {
+      "name": "distinct_device_tokens",
+      "passed": true
+    },
+    {
+      "name": "second_device_cookie_only",
+      "passed": true
+    },
+    {
+      "name": "revoke_second_device",
+      "passed": true
+    },
+    {
+      "name": "second_revoked_cookie_denied",
+      "passed": true
+    },
+    {
+      "name": "first_device_unaffected",
+      "passed": true
+    },
+    {
+      "name": "no_rf_commands_sent",
+      "passed": true
+    }
+  ],
+  "before_attempts": 0,
+  "after_attempts": 0,
+  "rf": {
+    "ready": true,
+    "marcstate": 1,
+    "bus_error": 0
+  }
+}

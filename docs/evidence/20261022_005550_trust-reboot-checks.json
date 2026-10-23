@@ -1,0 +1,27 @@
+{
+  "checks": [
+    {
+      "name": "cookie_survives_real_esp32_reboot",
+      "passed": true
+    },
+    {
+      "name": "revoke_after_reboot",
+      "passed": true
+    },
+    {
+      "name": "revoked_cookie_replay_denied",
+      "passed": true
+    },
+    {
+      "name": "no_rf_commands_sent",
+      "passed": true
+    }
+  ],
+  "before_attempts": 0,
+  "after_attempts": 0,
+  "rf": {
+    "ready": true,
+    "marcstate": 1,
+    "bus_error": 0
+  }
+}

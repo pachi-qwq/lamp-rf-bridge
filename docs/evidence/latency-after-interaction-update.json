@@ -1,0 +1,14 @@
+{
+  "command_roundtrip_ms": 203.1,
+  "http_status": 200,
+  "response": {
+    "ok": true,
+    "message": "已发送",
+    "button": "brightness_up",
+    "attempt": 1,
+    "cooldown_ms": 9,
+    "radio_elapsed_us": 127842,
+    "frames": 2,
+    "lamp_state_confirmed": false
+  }
+}

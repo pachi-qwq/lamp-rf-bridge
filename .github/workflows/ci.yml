@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  firmware:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+      - name: Install pinned build tools
+        run: python -m pip install -r requirements-lock.txt
+      - name: Check generated sources
+        run: |
+          python scripts/generate_replay_frames.py --check
+          python scripts/embed_web.py --check
+      - name: Build all firmware environments (no hardware)
+        run: python -m platformio run -e esp32dev -e phase2 -e phase3 -e phase4
+
+  quality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Install pinned check tools
+        run: |
+          python -m pip install -r requirements-dev.txt
+          npm ci --ignore-scripts
+      - name: C++ logic and real-capture regression (no hardware)
+        run: |
+          python scripts/test_host.py
+          python tests/test_analysis.py
+      - name: JavaScript syntax and offline authentication vectors
+        run: |
+          node --check web/app.js
+          node --check web/auth.js
+          node tests/test_web_auth.js
+      - name: Documentation, configuration and source checks
+        run: |
+          python scripts/check_repo.py
+          npm run lint:markdown
+          git diff --check

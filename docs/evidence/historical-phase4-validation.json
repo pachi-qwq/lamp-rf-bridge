@@ -1,0 +1,168 @@
+{
+  "core_mobile_control_verified": true,
+  "android_control_verified": true,
+  "iphone_browser_control_verified": true,
+  "operator_feedback": [
+    {
+      "platform": "Android",
+      "verbatim": "Android手机连上热点，成功登录，然后设置了我的家庭2.4G wifi，然后电脑能正常访问、登录",
+      "scope": "provisioning and desktop login"
+    },
+    {
+      "platform": "Android",
+      "verbatim": "灯已切换，手机控灯成功",
+      "scope": "lamp control"
+    },
+    {
+      "platform": "iPhone",
+      "verbatim": "能登录并成功控灯",
+      "scope": "after independent Digest challenge fix"
+    },
+    {
+      "platform": "iPhone 17 Pro Home Screen Web App",
+      "verbatim": "图标正常，按钮一页显示完整",
+      "scope": "homescreen icon and portrait single-page layout"
+    },
+    {
+      "platform": "iPhone 17 Pro Home Screen Web App",
+      "verbatim": "等待仍太久，而且页面已经能完整显示，不需要滚动，应禁止滚动",
+      "scope": "previous 250ms version; requested further UI and latency refinement"
+    },
+    {
+      "platform": "iPhone 17 Pro Home Screen Web App",
+      "verbatim": "响应快了，布局还是不好看",
+      "scope": "speed accepted; previous horizontal layout rejected; requested redesign and device trust"
+    },
+    {
+      "platform": "iPhone 17 Pro Home Screen Web App",
+      "verbatim": "重开后不用登录了，但是进入之后白屏有点久",
+      "scope": "device trust accepted; requested first page load and visual refinements"
+    },
+    {
+      "platform": "iPhone with VPN disabled",
+      "verbatim": "仍约 1～2 秒，变化不大",
+      "scope": "manual VPN off comparison did not noticeably change launch white screen"
+    },
+    {
+      "platform": "iPhone 17 Pro Home Screen Web App",
+      "verbatim": "仍有白屏，开关按键要放下来一点点",
+      "scope": "startup image change not yet effective; requested slight downward button adjustment"
+    },
+    {
+      "platform": "iPhone 17 Pro newly named Home Screen Web App",
+      "verbatim": "仍旧是等待超长时间有5~6秒，只不过从白屏变成了暗色且有灯的logo",
+      "scope": "startup image effective; latency still unresolved before server fix"
+    },
+    {
+      "platform": "iPhone 17 Pro Home Screen Web App after server preconnect fix",
+      "verbatim": "1 秒以内",
+      "scope": "tap home icon until control page can be operated"
+    },
+    {
+      "platform": "iPhone",
+      "verbatim": "填充和登录正常，按钮反馈正常",
+      "scope": "standard form autofill/login and button feedback"
+    }
+  ],
+  "homescreen_install_verified": true,
+  "iphone_17_pro_single_page_verified": false,
+  "short_cooldown_operator_verified": true,
+  "pending": [],
+  "timer_10min_verified": false,
+  "firmware_sha256": "cc23dffcfb57c495a0f3311a561426cb2d4dbcfefdfd4077e5c642d009ba465f",
+  "flash_bytes": 893681,
+  "static_ram_bytes": 49616,
+  "radio_serial_status": {
+    "type": "status",
+    "phase": 4,
+    "ready": true,
+    "marcstate": 1,
+    "bus_error": 0,
+    "attempts": 0,
+    "scope": "latest post-upload reset, before operator manual control"
+  },
+  "host_cpp_checks": 263,
+  "real_capture_python_tests": 5,
+  "http_checks": 35,
+  "digest_checks": 8,
+  "primary_svg_bytes": 596,
+  "ios_png_bytes": 2631,
+  "cooldown_ms": 20,
+  "local_url": "http://<device-ip>/",
+  "evidence": [
+    "20261022_001611_http-checks.json",
+    "20261022_001613_digest-checks.json",
+    "digest-multiclient-before.json",
+    "latency-before-interaction-update.json",
+    "latency-after-interaction-update.json",
+    "20261022_003814_http-checks.json",
+    "20261022_005518_http-checks.json",
+    "20261022_005520_digest-checks.json",
+    "20261022_005528_trust-checks.json",
+    "20261022_005550_trust-reboot-checks.json",
+    "20261022_010716_http-checks.json",
+    "web-load-before-inline.json",
+    "web-load-after-inline.json",
+    "20261022_011326_http-checks.json",
+    "idle-preconnect-before.json",
+    "20261022_012319_preconnect-checks.json",
+    "20261022_012323_http-checks.json",
+    "20261022_012328_digest-checks.json",
+    "20261022_014238_form-login-checks.json",
+    "20261022_014356_form-login-reboot-checks.json",
+    "20261022_014242_http-checks.json",
+    "20261022_014348_digest-checks.json",
+    "20261022_014250_preconnect-checks.json"
+  ],
+  "adjustment_frames": 2,
+  "mode_frames": 3,
+  "upload_baud": 460800,
+  "new_button_layout_verified": false,
+  "latency_before": {
+    "command_roundtrip_ms": 240.2,
+    "remaining_cooldown_ms": 239
+  },
+  "latency_after": {
+    "command_roundtrip_ms": 203.1,
+    "remaining_cooldown_ms": 9,
+    "radio_elapsed_us": 127842,
+    "frames": 2
+  },
+  "trusted_device_http_verified": true,
+  "trusted_device_real_reboot_verified": true,
+  "iphone_homescreen_trust_verified": true,
+  "trust_http_checks": 21,
+  "trust_reboot_checks": 4,
+  "single_response_first_page": true,
+  "launch_image_bytes": 17014,
+  "launch_image_dimensions": [
+    1206,
+    2622
+  ],
+  "startup_optimization_operator_verified": true,
+  "power_effect_operator_verified": false,
+  "pc_document_roundtrip_median_ms": 77.3,
+  "startup_status": "operator_confirmed_under_1_second",
+  "power_button_shift_px": 12,
+  "compact_power_button_shift_px": 8,
+  "preconnect_checks": 11,
+  "preconnect_block_real_device_fixed": true,
+  "iphone_launch_background_verified": true,
+  "iphone_startup_operator_report": "1 秒以内",
+  "idle_preconnect_wait_ms": 200,
+  "preconnect_request_before_ms": 4930.1,
+  "preconnect_request_after_ms": 113.9,
+  "form_login_checks": 27,
+  "form_login_reboot_checks": 6,
+  "latest_real_network_auth_checks": 87,
+  "ios_password_autofill_verified": true,
+  "standard_form_login_operator_verified": true,
+  "button_feedback_operator_verified": true,
+  "lamp_state_feedback_verified": false,
+  "record_maintenance": {
+    "scope": "Only the evidence array paths were normalized relative to this file after relocation. No outcomes, quotations, timings, counters, hashes or historical pending flags were changed.",
+    "scope_zh_CN": "仅将 evidence 数组路径修正为相对此文件的位置；测试结果、引语、时序、计数、哈希及历史待验标记均未改动。",
+    "privacy_review": "No additional credential or personal identifier redaction required; short technical observations and intended lamp RF fixtures retained.",
+    "privacy_review_zh_CN": "本轮未发现需新增脱敏的凭据或个人标识；保留必要的简短技术观察及预期公开的灯具射频样本。"
+  }
+}

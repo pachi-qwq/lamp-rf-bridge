@@ -1,0 +1,135 @@
+/* SPDX-License-Identifier: MIT */
+:root {
+  color-scheme: dark;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #141414;
+  color: #f5efe6;
+  font-synthesis: none;
+  -webkit-text-size-adjust: 100%;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --press-ease: cubic-bezier(.23,1,.32,1);
+}
+* { box-sizing: border-box; }
+html { height: 100%; overflow: hidden; overscroll-behavior: none; }
+body {
+  position: fixed; inset: 0; margin: 0; height: 100dvh; overflow: hidden;
+  overscroll-behavior: none; -webkit-tap-highlight-color: transparent;
+  background: radial-gradient(ellipse 90% 38% at 50% 26%, #28231c 0%, #141414 90%);
+}
+main {
+  width: 100%; max-width: 440px; height: 100%; margin: 0 auto;
+  padding: calc(max(var(--safe-top), 36px) + 28px) 24px calc(max(var(--safe-bottom), 14px) + 10px);
+  display: grid; grid-template-rows: 58px minmax(166px, 1fr) 246px 24px 44px; gap: 14px;
+}
+header { display: flex; justify-content: space-between; align-items: center; }
+.eyebrow { color: #a99b86; font-size: 9px; letter-spacing: 2.1px; margin: 0 0 8px; line-height: 1.2; }
+h1 { font-size: 28px; font-weight: 600; letter-spacing: 1px; line-height: 1.2; margin: 0; }
+h2 { font-size: 17px; font-weight: 600; margin: 0; }
+.badge { font-size: 11px; color: #b3aba0; border-radius: 30px; padding: 8px 10px; background: #252522; white-space: nowrap; }
+.badge::before { content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: currentColor; margin-right: 6px; vertical-align: 2px; }
+.badge.online { color: #b6c7a9; background: #242b22; }
+.badge.error { color: #efb1a1; }
+.power-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 0; }
+.lamp { width: 68px; height: 74px; flex: none; }
+.lamp svg { display: block; width: 100%; height: 100%; }
+.power-button {
+  position: relative; top: 12px;
+  display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; padding: 0; flex: none;
+  background: linear-gradient(150deg, #f7dfbc, #dcb47c); border: 1px solid #ffe5bf;
+  color: #4b3720; box-shadow: inset 0 1px 0 #fff8, 0 3px 0 #8d693f, 0 6px 18px #0005;
+}
+.power-button svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+/* Illustrate this page's latest operation; successful TX is not lamp-state confirmation.
+ * 仅示意本页最近的操作；不把发射成功当成灯具状态确认。 */
+.lamp { position: relative; }
+.lamp::before { content: ""; position: absolute; inset: -28px -42px -10px; border-radius: 50%; background: radial-gradient(ellipse, #e8be6d30, transparent 70%); opacity: .16; transition: opacity 160ms var(--press-ease); pointer-events: none; }
+.lamp svg { position: relative; }
+.lamp-light { opacity: .28; transition: opacity 160ms var(--press-ease); }
+[data-power-effect="on"] .lamp-light, [data-power-effect="on"] .lamp::before { opacity: 1; }
+[data-power-effect="off"] .lamp-light, [data-power-effect="off"] .lamp::before { opacity: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.control {
+  display: flex; align-items: center; justify-content: flex-start; gap: 12px; min-width: 0; padding: 15px 16px;
+  background: linear-gradient(150deg, #2e2e2a, #242421); border: 1px solid #414039; border-radius: 20px;
+  box-shadow: inset 0 1px 0 #ffffff09, 0 3px 0 #0d0d0b, 0 5px 10px #0002; text-align: left;
+}
+.control-icon { display: grid; place-items: center; color: #d9c6a7; width: 28px; height: 30px; flex: none; }
+.control-icon svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.control-copy { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.control strong { font-size: 15px; font-weight: 550; line-height: 1.2; white-space: nowrap; }
+.control small { font-size: 10px; color: #a8a396; line-height: 1.2; white-space: nowrap; }
+.temperature { width: 21px; height: 21px; border-radius: 50%; border: 1px solid #ffffff28; box-shadow: inset 0 1px 3px #ffffff25; }
+.warm { background: linear-gradient(135deg, #ffe1b3, #dba065); }
+.cool { background: linear-gradient(135deg, #f6f6ed, #b4cadd); }
+button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; user-select: none; -webkit-user-select: none; transition: none; }
+button:active:not(:disabled) { transform: translateY(1px) scale(.98); }
+.control:active:not(:disabled) { box-shadow: inset 0 1px 4px #0004, 0 1px 0 #0d0d0b; }
+button:disabled { cursor: default; }
+/* Keep the whole grid visually stable during TX/cooldown; dim only when unavailable.
+ * 短暂发送／冷却不改变整排外观；只有真实不可用状态才降低可见度。 */
+body.rf-unavailable button[data-command] { opacity: .38; }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid #efc68c; outline-offset: 4px; }
+.notice { margin: 0; display: grid; place-items: center; font-size: 11px; line-height: 1.4; text-align: center; color: #bbad98; }
+.notice.error { color: #efb1a1; }
+footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.device-info { display: flex; flex-direction: column; gap: 5px; font-size: 10px; color: #918b7f; line-height: 1.3; }
+.trust-button { display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 44px; padding: 0 0 0 10px; border: 0; background: none; font-size: 11px; color: #c0b198; white-space: nowrap; }
+.trust-button svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.trust-button.trusted { color: #afc09f; }
+.muted { color: #aaa296; font-size: 12px; line-height: 1.7; }
+.setup { padding: 22px 20px; background: #242421; border: 1px solid #414039; border-radius: 20px; }
+.setup label { display: block; font-size: 12px; color: #c8c0b5; margin: 16px 0 7px; }
+.setup input { width: 100%; min-height: 46px; border: 1px solid #454238; border-radius: 10px; background: #171716; color: #f6f2ec; font: inherit; font-size: 16px; padding: 10px 12px; }
+.save { min-height: 48px; width: 100%; margin-top: 20px; background: #e2c095; border: 1px solid #f0d7b3; border-radius: 12px; color: #352819; font-size: 14px; font-weight: 600; }
+.setup a { color: #efc997; font-size: 13px; overflow-wrap: anywhere; }
+[hidden] { display: none !important; }
+html.configuring, body.configuring { position: static; height: auto; overflow: auto; overscroll-behavior: auto; }
+.configuring main { height: auto; min-height: 100dvh; display: flex; flex-direction: column; }
+.configuring header { min-height: 58px; }
+.configuring .power-card { height: 210px; flex-shrink: 0; }
+.configuring .controls { height: 246px; flex-shrink: 0; }
+.configuring .notice { min-height: 24px; }
+@media (max-height: 800px) {
+  main { padding-top: calc(max(var(--safe-top), 32px) + 20px); padding-bottom: calc(max(var(--safe-bottom), 12px) + 8px); grid-template-rows: 52px minmax(144px, 1fr) 222px 22px 40px; gap: 10px; }
+  h1 { font-size: 26px; }
+  .lamp { width: 57px; height: 62px; }
+  .power-card { gap: 8px; }
+  .power-button { width: 64px; height: 64px; }
+  .control { border-radius: 18px; padding: 12px 15px; }
+}
+@media (max-height: 700px) {
+  main { padding-top: calc(max(var(--safe-top), 24px) + 12px); padding-bottom: calc(max(var(--safe-bottom), 8px) + 6px); grid-template-rows: 48px minmax(116px, 1fr) 204px 20px 36px; gap: 8px; }
+  h1 { font-size: 24px; }
+  .eyebrow { margin-bottom: 6px; font-size: 8px; }
+  .lamp { width: 44px; height: 48px; }
+  .power-card { gap: 6px; }
+  .power-button { width: 54px; height: 54px; top: 8px; }
+  .power-button svg { width: 24px; height: 24px; }
+  .controls { gap: 10px; }
+  .control { padding: 10px 13px; gap: 10px; }
+  .control strong { font-size: 14px; }
+  .control small { font-size: 9px; }
+  .trust-button { min-height: 36px; }
+}
+@media (max-width: 360px) { main { padding-left: 18px; padding-right: 18px; } .control { padding-left: 12px; padding-right: 10px; gap: 8px; } }
+@media (hover: hover) and (pointer: fine) { .control:hover:not(:disabled) { border-color: #8a7c63; } .trust-button:hover:not(:disabled) { color: #f1d5ac; } }
+@media (prefers-reduced-motion: reduce) { button { transition: none; } button:active:not(:disabled) { transform: none; } }
+@media (prefers-contrast: more) { .control { border-color: #827c6b; } .control small, .device-info { color: #c4bcac; } }
+body.keyboard button { transition: none; }
+body.keyboard button:active:not(:disabled) { transform: none; }
+
+@media (prefers-reduced-motion: reduce) { .lamp-light, .lamp::before { transition-duration: 100ms; } }
+body.keyboard .lamp-light, body.keyboard .lamp::before { transition: none; }
+
+.login-panel { margin-top: 28px; padding: 24px; border: 1px solid #414039; border-radius: 22px; background: #242421; }
+.login-panel label { display: block; margin: 18px 0 8px; color: #c8c0b5; font-size: 13px; }
+.login-panel input:not([type="checkbox"]) { width: 100%; min-height: 48px; border: 1px solid #504b40; border-radius: 11px; background: #171716; color: #f6f2ec; font: inherit; font-size: 16px; padding: 11px 12px; }
+.login-panel .remember { display: flex; align-items: center; gap: 9px; min-height: 44px; font-size: 12px; margin: 14px 0 0; }
+.remember input { width: 19px; height: 19px; accent-color: #e2c095; margin: 0; }
+.login-result { min-height: 22px; color: #efb1a1; font-size: 12px; line-height: 1.6; margin: 16px 0 0; }
+html.login-mode, body.login-mode { position: static; height: auto; min-height: 100dvh; overflow: auto; overscroll-behavior: auto; }
+.login-mode main { height: auto; min-height: 100dvh; display: flex; flex-direction: column; }
+.login-mode header { min-height: 58px; }
+.login-mode .power-card, .login-mode .controls, .login-mode .notice, .login-mode footer, .login-mode .setup { display: none !important; }

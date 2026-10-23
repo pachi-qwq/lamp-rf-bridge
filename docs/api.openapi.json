@@ -1,0 +1,1063 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "lamp-rf-bridge HTTP API",
+    "version": "unreleased",
+    "description": "Local gateway, no confirmed lamp feedback. / 局域网网关，无已确认灯具回传。",
+    "license": {
+      "name": "MIT (project source only)"
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "security": [
+    {
+      "deviceCookie": []
+    },
+    {
+      "digest": []
+    }
+  ],
+  "paths": {
+    "/api/session": {
+      "get": {
+        "summary": "Probe session / 探测会话",
+        "parameters": [
+          {
+            "name": "X-Lamp-Web",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1"
+              ]
+            },
+            "description": "Use JSON 401, no native auth popup. / 返回 JSON 401，不弹系统认证框。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "authenticated": {
+                          "const": false
+                        }
+                      },
+                      "required": [
+                        "authenticated"
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/Status"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {},
+          {
+            "deviceCookie": []
+          },
+          {
+            "digest": []
+          }
+        ]
+      }
+    },
+    "/api/login/challenge": {
+      "get": {
+        "summary": "Issue one-use challenge / 签发一次性挑战",
+        "parameters": [
+          {
+            "name": "X-Lamp-Web",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1"
+              ]
+            },
+            "description": "Use JSON 401, no native auth popup. / 返回 JSON 401，不弹系统认证框。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginChallenge"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/session/login": {
+      "post": {
+        "summary": "Consume challenge and log in / 消耗挑战并登录",
+        "parameters": [
+          {
+            "name": "X-Lamp-Web",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1"
+              ]
+            },
+            "description": "Use JSON 401, no native auth popup. / 返回 JSON 401，不弹系统认证框。"
+          },
+          {
+            "name": "X-Lamp-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Boot CSRF; login uses its one-use challenge CSRF. / 启动周期 CSRF；登录使用一次性挑战 CSRF。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResult"
+                }
+              }
+            },
+            "headers": {
+              "Set-Cookie": {
+                "description": "HttpOnly; SameSite=Strict; Path=/; remembered adds Max-Age. / 持久信任另加 Max-Age。",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "remember": {
+                    "type": "string",
+                    "enum": [
+                      "0",
+                      "1"
+                    ]
+                  }
+                },
+                "required": [
+                  "remember"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "digest": []
+          }
+        ],
+        "description": "Digest must use the exact nonce from GET /api/login/challenge and bind this POST URI. / Digest 须使用挑战签发的 nonce 并绑定此 POST URI。"
+      }
+    },
+    "/api/status": {
+      "get": {
+        "summary": "Gateway status / 网关状态",
+        "parameters": [
+          {
+            "name": "X-Lamp-Web",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1"
+              ]
+            },
+            "description": "Use JSON 401, no native auth popup. / 返回 JSON 401，不弹系统认证框。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/command": {
+      "post": {
+        "summary": "Send one whitelisted command / 发送一次白名单命令",
+        "parameters": [
+          {
+            "name": "X-Lamp-Web",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1"
+              ]
+            },
+            "description": "Use JSON 401, no native auth popup. / 返回 JSON 401，不弹系统认证框。"
+          },
+          {
+            "name": "X-Lamp-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Boot CSRF; login uses its one-use challenge CSRF. / 启动周期 CSRF；登录使用一次性挑战 CSRF。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommandResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Error"
+                    },
+                    {
+                      "$ref": "#/components/schemas/CommandResult"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Error"
+                    },
+                    {
+                      "$ref": "#/components/schemas/CommandResult"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CommandInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wifi": {
+      "post": {
+        "summary": "Save Wi-Fi from AP only / 仅热点接口配网",
+        "parameters": [
+          {
+            "name": "X-Lamp-Web",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1"
+              ]
+            },
+            "description": "Use JSON 401, no native auth popup. / 返回 JSON 401，不弹系统认证框。"
+          },
+          {
+            "name": "X-Lamp-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Boot CSRF; login uses its one-use challenge CSRF. / 启动周期 CSRF；登录使用一次性挑战 CSRF。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WifiResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/WifiInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/trust": {
+      "post": {
+        "summary": "Trust this device / 信任此设备",
+        "parameters": [
+          {
+            "name": "X-Lamp-Web",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1"
+              ]
+            },
+            "description": "Use JSON 401, no native auth popup. / 返回 JSON 401，不弹系统认证框。"
+          },
+          {
+            "name": "X-Lamp-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Boot CSRF; login uses its one-use challenge CSRF. / 启动周期 CSRF；登录使用一次性挑战 CSRF。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResult"
+                }
+              }
+            },
+            "headers": {
+              "Set-Cookie": {
+                "description": "HttpOnly; SameSite=Strict; Path=/; remembered adds Max-Age. / 持久信任另加 Max-Age。",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "maxProperties": 0,
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session/forget": {
+      "post": {
+        "summary": "Revoke trust and issue RAM session / 撤销信任并签发 RAM 会话",
+        "parameters": [
+          {
+            "name": "X-Lamp-Web",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1"
+              ]
+            },
+            "description": "Use JSON 401, no native auth popup. / 返回 JSON 401，不弹系统认证框。"
+          },
+          {
+            "name": "X-Lamp-CSRF",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Boot CSRF; login uses its one-use challenge CSRF. / 启动周期 CSRF；登录使用一次性挑战 CSRF。"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResult"
+                }
+              }
+            },
+            "headers": {
+              "Set-Cookie": {
+                "description": "HttpOnly; SameSite=Strict; Path=/; remembered adds Max-Age. / 持久信任另加 Max-Age。",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "JSON response / JSON 响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "maxProperties": 0,
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "deviceCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "lamp_device"
+      },
+      "digest": {
+        "type": "http",
+        "scheme": "digest"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "const": false
+          },
+          "message": {
+            "type": "string",
+            "description": "Chinese device message. / 中文设备提示。"
+          }
+        },
+        "required": [
+          "ok",
+          "message"
+        ],
+        "additionalProperties": false
+      },
+      "LoginChallenge": {
+        "type": "object",
+        "properties": {
+          "realm": {
+            "const": "Lamp Bridge"
+          },
+          "nonce": {
+            "type": "string",
+            "description": "Signed, per-boot, 72 hex characters. / 本次启动签名，72 位十六进制。",
+            "minLength": 72,
+            "maxLength": 72
+          },
+          "opaque": {
+            "type": "string",
+            "description": "Boot opaque. / 启动周期 opaque。"
+          },
+          "csrf": {
+            "type": "string",
+            "description": "One-use challenge CSRF. / 一次性挑战 CSRF。"
+          }
+        },
+        "required": [
+          "realm",
+          "nonce",
+          "opaque",
+          "csrf"
+        ]
+      },
+      "LoginResult": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "const": true
+          },
+          "trusted_device": {
+            "type": "boolean",
+            "description": "Persistent trust status. / 持久信任状态。"
+          }
+        },
+        "required": [
+          "ok",
+          "trusted_device"
+        ]
+      },
+      "WifiResult": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "const": true
+          },
+          "message": {
+            "type": "string",
+            "description": "Saved and connecting. / 已保存并连接中。"
+          }
+        },
+        "required": [
+          "ok",
+          "message"
+        ]
+      },
+      "CommandInput": {
+        "type": "object",
+        "properties": {
+          "button": {
+            "type": "string",
+            "enum": [
+              "power",
+              "brightness_up",
+              "brightness_down",
+              "cct_up",
+              "cct_down",
+              "night_mode",
+              "timer_10min"
+            ]
+          },
+          "request_id": {
+            "type": "string",
+            "description": "",
+            "pattern": "^[0-9a-f]{16,48}$"
+          }
+        },
+        "required": [
+          "button",
+          "request_id"
+        ],
+        "additionalProperties": false
+      },
+      "WifiInput": {
+        "type": "object",
+        "properties": {
+          "ssid": {
+            "type": "string",
+            "description": "1..32 UTF-8 bytes, no control characters. / 1..32 UTF-8 字节，拒绝控制字符。"
+          },
+          "password": {
+            "type": "string",
+            "description": "Empty or 8..63 UTF-8 bytes, no control characters. / 为空或 8..63 UTF-8 字节，拒绝控制字符。"
+          }
+        },
+        "required": [
+          "ssid",
+          "password"
+        ],
+        "additionalProperties": false
+      },
+      "CommandResult": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": ""
+          },
+          "message": {
+            "type": "string",
+            "description": "Chinese outcome. / 中文结果。"
+          },
+          "button": {
+            "type": "string",
+            "enum": [
+              "power",
+              "brightness_up",
+              "brightness_down",
+              "cct_up",
+              "cct_down",
+              "night_mode",
+              "timer_10min"
+            ]
+          },
+          "attempt": {
+            "type": "integer",
+            "description": "Actual boot-local TX attempts. / 启动周期实际发射尝试。"
+          },
+          "cooldown_ms": {
+            "type": "integer",
+            "description": "Remaining milliseconds. / 剩余毫秒。"
+          },
+          "radio_elapsed_us": {
+            "type": "integer",
+            "description": "TX elapsed microseconds, zero when not sent. / 发射微秒耗时，未发射时为零。"
+          },
+          "frames": {
+            "type": "integer",
+            "description": "Configured repetitions. / 配置重复数。"
+          },
+          "lamp_state_confirmed": {
+            "const": false
+          }
+        },
+        "required": [
+          "ok",
+          "message",
+          "button",
+          "attempt",
+          "cooldown_ms",
+          "radio_elapsed_us",
+          "frames",
+          "lamp_state_confirmed"
+        ]
+      },
+      "Status": {
+        "type": "object",
+        "properties": {
+          "authenticated": {
+            "const": true
+          },
+          "phase": {
+            "const": 4
+          },
+          "csrf": {
+            "type": "string",
+            "description": "Boot mutation CSRF. / 启动周期修改操作 CSRF。"
+          },
+          "auth": {
+            "type": "object",
+            "properties": {
+              "trusted_device": {
+                "type": "boolean",
+                "description": "Valid persistent Cookie. / 有效持久 Cookie。"
+              }
+            },
+            "required": [
+              "trusted_device"
+            ]
+          },
+          "http": {
+            "type": "object",
+            "properties": {
+              "idle_preconnect_closed": {
+                "type": "integer",
+                "description": "Boot guard count. / 启动周期保护计数。"
+              }
+            },
+            "required": [
+              "idle_preconnect_closed"
+            ]
+          },
+          "rf": {
+            "type": "object",
+            "properties": {
+              "ready": {
+                "type": "boolean",
+                "description": "Gateway readiness, not lamp state. / 网关就绪，不是灯具状态。"
+              },
+              "marcstate": {
+                "type": "integer",
+                "description": "Raw CC1101 state. / 原始模块状态。"
+              },
+              "bus_error": {
+                "type": "integer",
+                "description": "BusError enum 0..7. / BusError 枚举 0..7。"
+              }
+            },
+            "required": [
+              "ready",
+              "marcstate",
+              "bus_error"
+            ]
+          },
+          "network": {
+            "type": "object",
+            "properties": {
+              "connected": {
+                "type": "boolean",
+                "description": ""
+              },
+              "configured": {
+                "type": "boolean",
+                "description": ""
+              },
+              "ap_active": {
+                "type": "boolean",
+                "description": ""
+              },
+              "can_configure": {
+                "type": "boolean",
+                "description": "Request arrived on active AP. / 请求由当前热点进入。"
+              },
+              "ip": {
+                "type": "string",
+                "description": "Private connected IP or empty. / 私人连接 IP 或空。"
+              },
+              "ssid": {
+                "type": "string",
+                "description": "Private connected SSID or empty. / 私人连接 SSID 或空。"
+              }
+            },
+            "required": [
+              "connected",
+              "configured",
+              "ap_active",
+              "can_configure",
+              "ip",
+              "ssid"
+            ]
+          },
+          "attempts": {
+            "type": "integer",
+            "description": ""
+          },
+          "cooldown_ms": {
+            "type": "integer",
+            "description": ""
+          },
+          "last_button": {
+            "type": "string",
+            "description": ""
+          },
+          "uptime_s": {
+            "type": "integer",
+            "description": "Unsigned millis()/1000, wraps. / 无符号 millis()/1000，会回绕。"
+          }
+        },
+        "required": [
+          "authenticated",
+          "phase",
+          "csrf",
+          "auth",
+          "http",
+          "rf",
+          "network",
+          "attempts",
+          "cooldown_ms",
+          "last_button",
+          "uptime_s"
+        ]
+      }
+    }
+  }
+}

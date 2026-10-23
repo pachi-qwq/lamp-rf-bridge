@@ -1,0 +1,25 @@
+.venv/
+.pio/
+.pio-core/
+build/
+__pycache__/
+*.pyc
+.vscode/
+.env
+secrets.h
+include/secrets.h
+
+# Raw serial logs can contain credentials or device identifiers.
+# 原始串口日志可能包含凭据或设备标识。
+*.serial.log
+docs/evidence/*.log
+.venv-*/
+node_modules/
+
+# Keep new RF recordings local until an explicit publication review.
+# 新采样先本地保留，明确审查后才加入公开数据集。
+captures/*
+!captures/README.md
+!captures/README.zh-CN.md
+.env.*
+!.env.example
